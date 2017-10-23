@@ -8,6 +8,7 @@ import './App.css';
 import Signup from './Signup';
 import Login from './Login';
 import AuthenticatedRoute from './AuthenticatedRoute';
+import TrailAPI from './TrailAPI';
 
 class App extends Component {
   constructor(props) {
@@ -32,7 +33,7 @@ class App extends Component {
           <Login lift={this.liftTokenToState} />
         </div>
         <div>
-
+          <TrailAPI />
         </div>
       </div>
     );

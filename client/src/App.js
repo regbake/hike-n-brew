@@ -9,6 +9,8 @@ import Signup from './Signup';
 import Login from './Login';
 import Landing from "./Landing";
 import AuthenticatedRoute from './AuthenticatedRoute';
+import MapContainer from './MapContainer';
+import TrailAPI from './TrailAPI';
 
 class App extends Component {
   constructor(props) {
@@ -26,6 +28,23 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+<nav>
+<ul className="nav-bar">
+<li><a href="/">Home</a></li>
+<li><a href="#">Sign Up</a></li>
+<li><a href="#">Login</a></li>
+<li><a href="#">About us bois</a></li>
+</ul>
+</nav>
+
+
+      <div>
+        <h1>Hike & Brew</h1>
+        <h2>Hike & Brew with your crew!</h2>
+      </div>
+
+
+
         <div className="SignupBox">
           <Signup lift={this.liftTokenToState} />
         </div>
@@ -35,6 +54,13 @@ class App extends Component {
 
         <div>
           <Landing />
+
+        <div className="MapContainer">
+          < this.state.MapContainer />
+        </div>
+        <div>
+          <TrailAPI />
+
         </div>
       </div>
     );

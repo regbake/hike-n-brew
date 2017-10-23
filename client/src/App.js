@@ -7,6 +7,7 @@ import {
 import './App.css';
 import Signup from './Signup';
 import Login from './Login';
+import Landing from "./Landing";
 import AuthenticatedRoute from './AuthenticatedRoute';
 import MapContainer from './MapContainer';
 import TrailAPI from './TrailAPI';
@@ -50,11 +51,16 @@ class App extends Component {
         <div className="LoginBox">
           <Login lift={this.liftTokenToState} />
         </div>
+
+        <div>
+          <Landing />
+
         <div className="MapContainer">
           < this.state.MapContainer />
         </div>
         <div>
           <TrailAPI />
+
         </div>
       </div>
     );

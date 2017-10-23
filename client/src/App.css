@@ -11,3 +11,14 @@
   background: lightblue;
   padding: 0.5em;
 }
+.nav-bar{
+  display: inline-block;
+  list-style: none;
+  font-size: 20px;
+}
+a{
+  text-decoration: none;
+}
+a:hover{
+  color: black;
+}

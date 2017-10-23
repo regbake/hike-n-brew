@@ -25,6 +25,23 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+<nav>
+<ul className="nav-bar">
+<li><a href="/">Home</a></li>
+<li><a href="#">Sign Up</a></li>
+<li><a href="#">Login</a></li>
+<li><a href="#">About us bois</a></li>
+</ul>
+</nav>
+
+
+      <div>
+        <h1>Hike & Brew</h1>
+        <h2>Hike & Brew with your crew!</h2>
+      </div>
+
+
+
         <div className="SignupBox">
           <Signup lift={this.liftTokenToState} />
         </div>

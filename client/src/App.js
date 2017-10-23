@@ -7,6 +7,7 @@ import {
 import './App.css';
 import Signup from './Signup';
 import Login from './Login';
+import Landing from "./Landing";
 import AuthenticatedRoute from './AuthenticatedRoute';
 
 class App extends Component {
@@ -31,8 +32,9 @@ class App extends Component {
         <div className="LoginBox">
           <Login lift={this.liftTokenToState} />
         </div>
-        <div>
 
+        <div>
+          <Landing />
         </div>
       </div>
     );

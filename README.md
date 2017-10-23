@@ -1,7 +1,7 @@
 # hike-n-brew
 
 # Day One
-![Day One](MD-images/TrelloDayOne.png)
+![](./MD-images/TrelloDayOne.png)
 
 Erik - Worked on a layout for the page with bootstrap and studied the brewery API we are going to use to implement that.
 <br>

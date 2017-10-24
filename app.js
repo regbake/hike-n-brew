@@ -6,8 +6,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-
-
 // Added lines for session, passport, and connect-flash
 var session = require('express-session');
 var passport = require('./config/ppConfig');

@@ -32,6 +32,17 @@ class Landing extends Component{
         xhr.setRequestHeader("X-Mashape-Authorization", "9TRm77y42fmshbKC8mhoJDbFf111p1mClnPjsn0iUmYlE5gzRa"); // Enter here your Mashape key
         }
     });
+
+    $.ajax({
+        url: 'http://beermapping.com/webservice/loccity/707deabe170541be2a9cba98e95e92f5/seattle&s=json',
+        type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
+        data: {}, // Additional parameters here
+        dataType: 'json',
+        success: function(brew) {
+          console.log(brew)
+            },
+        error: function(err) { alert(err); },
+    });
   }
 
   handleLocationChange = (e) => {

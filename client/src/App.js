@@ -10,7 +10,6 @@ import Login from './Login';
 import Landing from "./Landing";
 import AuthenticatedRoute from './AuthenticatedRoute';
 // import MapContainer from './MapContainer';
-import TrailAPI from './TrailAPI';
 
 class App extends Component {
   constructor(props) {
@@ -56,11 +55,6 @@ class App extends Component {
         <div className="MapContainer">
 
         </div>
-
-        <div>
-          <TrailAPI />
-        </div>
-
       </div>
     );
   }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import $ from 'jquery';
+import $ from "jquery";
 
 class Landing extends Component{
   constructor(props) {

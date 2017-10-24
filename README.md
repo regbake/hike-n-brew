@@ -2,6 +2,7 @@
 
 ## Day One
 ![Planning](TrelloDayOne.png)
+![Planning](originalplanning.jpg)
 
 Erik - Worked on a layout for the page with bootstrap and studied the brewery API we are going to use to implement that.
 <br>
@@ -15,3 +16,4 @@ Tony - Worked on getting the google maps API up and running.
 Team - We spent the majority of the morning brainstorming ideas and mapping things out for the rest of the project.
 
 ## Day Two
+![Routes](routing.jpg)

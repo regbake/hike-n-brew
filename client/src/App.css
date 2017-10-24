@@ -14,12 +14,13 @@
 .cover{
   height: 50%;
   width: 100%;
-  background: "../public/images/mountainbeer.jpg";
+  background-image: "./images/mountainbeer.jpg";
 }
-nav{
+.navbar{
   display: inline-block;
   list-style: none;
   font-size: 20px;
+  width: 100%;
 }
 a{
   text-decoration: none;
@@ -28,7 +29,7 @@ a{
 }
 a:hover{
   color: black;
-  font-family: 'Domine', serif;
+
 }
 h1{
   font-size: 32px;

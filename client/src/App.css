@@ -29,7 +29,6 @@ a{
 }
 a:hover{
   color: black;
-
 }
 h1{
   font-size: 32px;
@@ -38,4 +37,13 @@ h1{
 h2{
   font-size: 20px;
   font-family: 'Nunito Sans', sans-serif;
+}
+.searchbox{
+  width: 80%;
+  height: 50px;
+  font-size: 24px;
+}
+.btn-success{
+  height: 50px;
+  width: 300px;
 }

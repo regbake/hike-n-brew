@@ -8,6 +8,7 @@ import './App.css';
 import Signup from './Signup';
 import Login from './Login';
 import Landing from "./Landing";
+import Brewery from "./Brewery";
 import AuthenticatedRoute from './AuthenticatedRoute';
 // import MapContainer from './MapContainer';
 
@@ -49,15 +50,15 @@ class App extends Component {
           <h2>Hike & Brew with your crew!</h2>
         </div>
 
+        <div>
+          <Landing />
+        </div>
+
         <div className="SignupBox">
           <Signup lift={this.liftTokenToState} />
         </div>
         <div className="LoginBox">
           <Login lift={this.liftTokenToState} />
-        </div>
-
-        <div>
-          <Landing />
         </div>
 
         <div className="MapContainer">

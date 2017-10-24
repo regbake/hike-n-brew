@@ -10,7 +10,9 @@ router.get("/", function(req, res, next) {
 });
 
 router.post("/", function(req, res, next) {
-  console.log("Hit the post route");
+  //input location
+  var location = req.body.location;
+  console.log("Hit the post route", location);
 });
 
 module.exports = router;

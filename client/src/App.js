@@ -10,6 +10,7 @@ import Login from './Login';
 import Landing from "./Landing";
 import Brewery from "./Brewery";
 import AuthenticatedRoute from './AuthenticatedRoute';
+import MountainBeer from "./images/mountainbeer.jpg";
 // import MapContainer from './MapContainer';
 
 class App extends Component {
@@ -27,23 +28,33 @@ class App extends Component {
 
   render() {
     return (
+      <Router>
       <div className="App">
+
+
       <nav className="navbar navbar-inverse">
           <div className="container-fluid">
             <div className="navbar-header">
-              <a className="navbar-brand" href="#">Hike & Brew</a>
+              <Link className="navbar-brand" to="/">Hike & Brew</Link>
             </div>
             <ul className="nav navbar-nav">
-              <li className="active"><a href="#">Home</a></li>
-              <li><a href="#">Profile</a></li>
-              <li><a href="#">About Us</a></li>
+              <li className="active"><Link to="/">Home</Link></li>
+              <li><Link to="/profile">Profile</Link></li>
+              <li><Link to="/about">About Us</Link></li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
-              <li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
-              <li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
+              <li><Link to="signup"><span className="glyphicon glyphicon-user"></span> Sign Up</Link></li>
+              <li><Link to="login"><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
             </ul>
           </div>
         </nav>
+
+        <Router exact path="/" />
+        <Router path="/profile" />
+        <Router path="/about" />
+        <Router path="/signup" />
+        <Router path="/login" />
+
 
         <div className="cover">
           <h1>Hike & Brew</h1>
@@ -65,6 +76,7 @@ class App extends Component {
 
         </div>
       </div>
+      </Router>
     );
   }
 }

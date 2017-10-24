@@ -5,8 +5,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var unirest = require("unirest");
-var $ = require('jquery');
+
+
 
 // Added lines for session, passport, and connect-flash
 var session = require('express-session');

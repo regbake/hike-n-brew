@@ -11,10 +11,10 @@
   background: lightblue;
   padding: 0.5em;
 }
-.cover{
+div.cover{
   height: 50%;
   width: 100%;
-  background-image: "./images/mountainbeer.jpg";
+  background-image: url(images/mountainbeer.jpg) cover no-repeat;
 }
 .navbar{
   display: inline-block;

@@ -28,15 +28,14 @@ class App extends Component {
     return (
       <div className="App">
         <nav>
-          <ul className="nav-bar">
-            <li><a href="/">Home</a></li>
-            <li><a href="#">Sign Up</a></li>
-            <li><a href="#">Login</a></li>
-            <li><a href="#">About us bois</a></li>
-          </ul>
+        <a className="logo" href="/">Hike & Brew</a>
+            <a href="/">Home</a>
+            <a href="#">Sign Up</a>
+            <a href="#">Login</a>
+            <a href="#">About us bois</a>
         </nav>
 
-        <div>
+        <div className="cover">
           <h1>Hike & Brew</h1>
           <h2>Hike & Brew with your crew!</h2>
         </div>

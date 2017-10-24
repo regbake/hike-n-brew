@@ -11,14 +11,30 @@
   background: lightblue;
   padding: 0.5em;
 }
-.nav-bar{
+.cover{
+  height: 50%;
+  width: 100%;
+  background: "../public/images/mountainbeer.jpg";
+}
+nav{
   display: inline-block;
   list-style: none;
   font-size: 20px;
 }
 a{
   text-decoration: none;
+  padding-left: 200px;
+  font-family: 'Nunito Sans', sans-serif;
 }
 a:hover{
   color: black;
+  font-family: 'Domine', serif;
+}
+h1{
+  font-size: 32px;
+  font-family: 'Domine', serif;
+}
+h2{
+  font-size: 20px;
+  font-family: 'Nunito Sans', sans-serif;
 }

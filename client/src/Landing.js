@@ -42,8 +42,8 @@ class Landing extends Component{
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input type='text' value={this.state.location} onChange={this.handleLocationChange} />
-          <input type="submit" value="search!" />
+          <input className="searchbox" type='text' placeholder="Search by city" value={this.state.location} onChange={this.handleLocationChange} />
+          <input className="btn-success" type="submit" value="Search" />
         </form>
       </div>
     )

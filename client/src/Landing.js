@@ -28,7 +28,7 @@ class Landing extends Component{
           console.log(data)
             },
         error: function(err) { alert(err); },
-        beforeSend: function(xhr) {
+        beforeSend: function(xhr) { //what's the beforeSend call?
         xhr.setRequestHeader("X-Mashape-Authorization", "9TRm77y42fmshbKC8mhoJDbFf111p1mClnPjsn0iUmYlE5gzRa"); // Enter here your Mashape key
         }
     });

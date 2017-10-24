@@ -5,6 +5,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var unirest = require("unirest");
+var $ = require('jquery');
 
 // Added lines for session, passport, and connect-flash
 var session = require('express-session');
@@ -18,6 +20,7 @@ mongoose.connect('mongodb://localhost/mern-local-auth');
 var index = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
+var search = require("./routes/search");
 
 var app = express();
 
@@ -63,6 +66,7 @@ app.use(passport.session());
 app.use('/', index);
 app.use('/users', users);
 app.use('/auth', auth);
+app.use("/search", search);
 
 // catch 404 and forward to error handler - commented out
 // app.use(function(req, res, next) {

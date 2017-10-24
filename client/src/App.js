@@ -9,6 +9,7 @@ import Signup from './Signup';
 import Login from './Login';
 import Landing from "./Landing";
 import Brewery from "./Brewery";
+import Map from "./Map";
 import AuthenticatedRoute from './AuthenticatedRoute';
 // import MapContainer from './MapContainer';
 
@@ -62,7 +63,7 @@ class App extends Component {
         </div>
 
         <div className="MapContainer">
-
+          <Map initialPosition={{lat: 48, lng: 2.2}} />
         </div>
       </div>
     );

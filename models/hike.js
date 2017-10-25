@@ -4,14 +4,26 @@ var bcrypt = require('bcrypt');
 //change the parameters at the bottom based on returned data
 var hikeSchema = new mongoose.Schema({
   name: {
-    type: String
+    city: String
   },
-  location: {
+  state: {
     type: String
   },
   description: {
     type: String
-  }
+  },
+  lat: {
+    type: String
+  },
+  lon: {
+    type: String
+  },
+  length: {
+    type: Number
+  },
+  thumbnail: {
+    type: String
+  },
 });
 
 

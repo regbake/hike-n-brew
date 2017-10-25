@@ -47,3 +47,9 @@ h2{
   height: 50px;
   width: 300px;
 }
+.MapContainer{
+  margin-left:18%;
+}
+.map-header{
+  margin-right: 50%;
+}

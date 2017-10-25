@@ -17,3 +17,13 @@ Team - We spent the majority of the morning brainstorming ideas and mapping thin
 
 ## Day Two
 ![Routes](routing.jpg)
+
+Erik - Focused on the brewery API for the first portion of the morning until we had to scrap our original API. Then worked on page layout.
+<br>
+Chase - Configuring map API.
+<br>
+Reggie - Configured map API and worked on the new brewery API.
+<br>
+Tony - Pair coding with Chase to try and fix the map API.
+<br>
+Team - Crushed a few goals and maintaining positive moral in order to get our MVP ready by Friday!

@@ -8,7 +8,7 @@ class Login extends Component {
       email: '',
       password: ''
     }
-    
+
     this.handleEmailChange = this.handleEmailChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,7 +29,7 @@ class Login extends Component {
       password: this.state.password
     }).then(result => {
       localStorage.setItem('mernToken', result.data.token)
-      this.props.lift(result.data.token)
+      this.props.lift(result.data)
     })
   }
 

@@ -18,17 +18,22 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      token: {}
+      token: {},
+      user: {}
     }
     this.liftTokenToState = this.liftTokenToState.bind(this)
   }
 
-  liftTokenToState(token) {
-    this.setState({token: token})
+  liftTokenToState(data) {
+    this.setState({
+      token: data.token,
+      user: data.user
+    })
   }
 
   render() {
     return (
+      <div>
       <Router>
       <div className="App">
 
@@ -44,40 +49,21 @@ class App extends Component {
               <li><Link to="/about">About Us</Link></li>
             </ul>
             <ul className="nav navbar-nav navbar-right">
-              <li><Link to="signup"><span className="glyphicon glyphicon-user"></span> Sign Up</Link></li>
-              <li><Link to="login"><span className="glyphicon glyphicon-log-in"></span> Login</Link></li>
+              <li><Link to="signup"><span className="glyphicon glyphicon-user"></span>Sign Up</Link></li>
+              <li><Link to="login"><span className="glyphicon glyphicon-log-in"></span>Login</Link></li>
             </ul>
           </div>
         </nav>
 
-        <Router exact path="/" />
-        <Router path="/profile" />
-        <Router path="/about" />
-        <Router path="/signup" />
-        <Router path="/login" />
+        <Route exact path="/"  render={(props) => <Landing />}/>
+        <Route path="/profile" />
+        <Route path="/about" />
+        <Route path="/signup" render={(props) => <Signup  lift={this.liftTokenToState} />} />
+        <Route path="/login" render={(props) => <Login  lift={this.liftTokenToState} />} />
 
-
-        <div className="cover">
-          <h1>Hike & Brew</h1>
-          <h2>Hike & Brew with your crew!</h2>
-        </div>
-
-        <div>
-          <Landing />
-        </div>
-
-        <div className="SignupBox">
-          <Signup lift={this.liftTokenToState} />
-        </div>
-        <div className="LoginBox">
-          <Login lift={this.liftTokenToState} />
-        </div>
-
-        <div className="MapContainer">
-          <Map initialPosition={{lat: 48, lng: 2.2}} />
-        </div>
       </div>
       </Router>
+      </div>
     );
   }
 }

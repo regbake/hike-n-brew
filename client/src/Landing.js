@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import $ from "jquery";
+import Map from "./Map";
+
 
 class Landing extends Component{
   constructor(props) {
@@ -51,11 +53,18 @@ class Landing extends Component{
 
   render() {
     return (
-      <div>
+      <div className="cover">
+
+        <h1>Hike & Brew</h1>
+        <h2>Hike & Brew with your crew!</h2>
+
         <form onSubmit={this.handleSubmit}>
-          <input className="searchbox" type='text' placeholder="Search by city" value={this.state.location} onChange={this.handleLocationChange} />
+          <input className="searchbox" type='text' placeholder="Search by city..." value={this.state.location} onChange={this.handleLocationChange} />
           <input className="btn-success" type="submit" value="Search" />
         </form>
+        <div className="MapContainer">
+          <Map initialPosition={{lat: 47.6, lng: -122.33}} />
+        </div>
       </div>
     )
   }

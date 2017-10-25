@@ -13,8 +13,8 @@ class Map extends Component {
   }
   render() {
     return (
-      <div>
-        <h1>Map</h1>
+      <div className="MapContainer">
+        <h1 className="map-header">Map</h1>
         <div ref="map" style={{width: 500, height: 500, border: '1px solid black'}}>
           I should be map!
         </div>

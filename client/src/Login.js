@@ -36,11 +36,15 @@ class Login extends Component {
 
   render() {
     return (
+      <div>
+      <h3>Log in</h3>
       <form onSubmit={this.handleSubmit}>
-        Email: <input type='text' value={this.state.email} onChange={this.handleEmailChange} /><br />
-        Password: <input type='password' value={this.state.password} onChange={this.handlePasswordChange} /><br />
+        Email: <input className="log-in-text" type='text' value={this.state.email} onChange={this.handleEmailChange} /><br />
+        Password: <input className="log-in-text" type='password' value={this.state.password} onChange={this.handlePasswordChange} /><br />
         <input type='submit' value='Log in' />
       </form>
+      </div>
+
     );
   }
 }

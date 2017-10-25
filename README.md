@@ -1,5 +1,5 @@
 # hike-n-brew
-
+![Beth](Beth.jpg)
 ## Day One
 ![Planning](TrelloDayOne.png)
 ![Planning](originalplanning.jpg)
@@ -27,3 +27,16 @@ Reggie - Configured map API and worked on the new brewery API.
 Tony - Pair coding with Chase to try and fix the map API.
 <br>
 Team - Crushed a few goals and maintaining positive moral in order to get our MVP ready by Friday!
+
+## Day Three
+![HikeBrew](HikeBrew.png)
+
+Erik - Setup the router and placed everything into its own route.
+<br>
+Chase - Configuring the brewery/trails API data to link with the google maps API.
+<br>
+Reggie - Converting brewery API data from street address to latitude and longitude so we are able to use it in our google maps API.
+<br>
+Tony - Setting map markers on the map related to the other APIs.
+<br>
+Team - Still feeling on track hoping to have an MVP by Friday.

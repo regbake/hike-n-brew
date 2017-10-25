@@ -132,7 +132,8 @@ class Landing extends Component{
 
   render() {
     return (
-      <div className="cover">
+      <div>
+      <div className="header">
 
         <h1>Hike & Brew</h1>
         <h2>Hike & Brew with your crew!</h2>
@@ -141,8 +142,8 @@ class Landing extends Component{
           <input className="searchbox" type='text' placeholder="Search by city..." value={this.state.location} onChange={this.handleLocationChange} />
           <input className="btn-success" type="submit" value="Search" />
         </form>
+          </div>
         <div className="MapContainer">
-
           <Map initialPosition={{lat: this.state.locationLat, lng: this.state.locationLng}} />
         </div>
       </div>

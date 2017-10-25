@@ -28,6 +28,7 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password
     }).then(result => {
+      console.log("submit handled")
       localStorage.setItem('mernToken', result.data.token)
       this.props.lift(result.data)
     })

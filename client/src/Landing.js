@@ -7,7 +7,14 @@ class Landing extends Component{
     super(props);
 
     this.state = {
-      location: ""
+      location: "",
+      hike: {
+
+      },
+      brew: {
+        name: "",
+
+      }
     };
   }
 
@@ -24,8 +31,11 @@ class Landing extends Component{
         type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
         data: {}, // Additional parameters here
         dataType: 'json',
-        success: function(data) {
-          console.log(data)
+        success: function(hike) {
+          console.log(hike)
+          this.setState({
+
+          })
             },
         error: function(err) { alert(err); },
         beforeSend: function(xhr) { //what's the beforeSend call?
@@ -40,6 +50,9 @@ class Landing extends Component{
         dataType: 'json',
         success: function(brew) {
           console.log(brew)
+          this.setState({
+            
+          })
             },
         error: function(err) { alert(err); },
     });

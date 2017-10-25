@@ -7,7 +7,27 @@ class Landing extends Component{
     super(props);
 
     this.state = {
-      location: ""
+      location: "",
+      hike: {
+        city: "",
+        state: "",
+        description: "",
+        lat: "",
+        lon: "",
+        length: "",
+        thumbnail: "",
+      },
+      brew: {
+        name: "",
+        city: "",
+        overall: "",
+        phone: "",
+        status: "",
+        street: "",
+        zip: "",
+        lat: "",
+        lon: "",
+      }
     };
   }
 
@@ -24,8 +44,8 @@ class Landing extends Component{
         type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
         data: {}, // Additional parameters here
         dataType: 'json',
-        success: function(data) {
-          console.log(data)
+        success: function(hike) {
+          console.log(hike)
             },
         error: function(err) { alert(err); },
         beforeSend: function(xhr) { //what's the beforeSend call?
@@ -43,6 +63,21 @@ class Landing extends Component{
             },
         error: function(err) { alert(err); },
     });
+
+    //google geocoding url
+    //https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=
+    $.ajax({
+      url: 'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key='+'AIzaSyAZR0AqjyaFpY5WK2P7Labc62Jb-lExXNw',
+      type: "GET",
+      data: {},
+      dataType: 'json',
+      success: function(latLon) {
+        console.log(latLon)
+        latLon.results
+      },
+      error: function(err) { alert(err); },
+    });
+
   }
 
   handleLocationChange = (e) => {

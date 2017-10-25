@@ -17,7 +17,7 @@ class Landing extends Component{
         lat: "",
         lon: "",
         length: "",
-        thumbnail: "",
+        thumbnail: ""
       },
       brew: {
         name: "",
@@ -28,7 +28,7 @@ class Landing extends Component{
         street: "",
         zip: "",
         lat: "",
-        lon: "",
+        lon: ""
       }
     };
   }
@@ -46,10 +46,20 @@ class Landing extends Component{
         type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
         data: {}, // Additional parameters here
         dataType: 'json',
-        success: function(hike) {
+        success: function(hike){
           console.log(hike)
-            },
+          this.setState({
+            city: hike.city,
+            state: hike.state,
+            description: hike.description,
+            lat: hike.lat,
+            lon: hike.lon,
+            length: hike.length,
+            thumbnail: hike.thumbnail
+          })
+        }.bind(this),
         error: function(err) { alert(err); },
+
         beforeSend: function(xhr) { //what's the beforeSend call?
         xhr.setRequestHeader("X-Mashape-Authorization", "9TRm77y42fmshbKC8mhoJDbFf111p1mClnPjsn0iUmYlE5gzRa"); // Enter here your Mashape key
         }
@@ -60,10 +70,21 @@ class Landing extends Component{
         type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
         data: {}, // Additional parameters here
         dataType: 'json',
-        success: function(brew) {
+        success: function(brew){
           console.log(brew)
-            },
+          this.setState({
+            name: brew.name,
+            city: brew.city,
+            overall: brew.overall,
+            phone: brew.phone,
+            street: brew.street,
+            zip: brew.zip,
+            lat: brew.lat,
+            lon: brew.lon
+          })
+        }.bind(this),
         error: function(err) { alert(err); },
+
     });
 
     //google geocoding url
@@ -86,7 +107,12 @@ class Landing extends Component{
     this.setState({location: e.target.value});
   }
 
+
+
   render() {
+    console.dir(this.state.hike);
+    console.dir(this.state.brew);
+
     return (
       <div className="cover">
 

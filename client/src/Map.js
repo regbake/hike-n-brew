@@ -13,12 +13,13 @@ class Map extends Component {
       zoom: 8
     });
   }
+
   render() {
     return (
       <div>
         <h1>Map</h1>
         <div ref="map" style={{width: 500, height: 500, border: '1px solid black'}}>
-          I should be map!
+
         </div>
       </div>
     )

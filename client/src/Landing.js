@@ -9,18 +9,31 @@ class Landing extends Component{
     this.state = {
       location: "",
       hike: {
-
+        city: "",
+        state: "",
+        description: "",
+        lat: "",
+        lon: "",
+        length: "",
+        thumbnail: "",
       },
       brew: {
         name: "",
-
+        city: "",
+        overall: "",
+        phone: "",
+        status: "",
+        street: "",
+        zip: "",
+        lat: "",
+        lon: "",
       }
     };
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(this.state)
+
     axios.post("/search/", {
       location: this.state.location
     })
@@ -33,9 +46,6 @@ class Landing extends Component{
         dataType: 'json',
         success: function(hike) {
           console.log(hike)
-          this.setState({
-
-          })
             },
         error: function(err) { alert(err); },
         beforeSend: function(xhr) { //what's the beforeSend call?
@@ -44,18 +54,30 @@ class Landing extends Component{
     });
 
     $.ajax({
-        url: 'http://beermapping.com/webservice/loccity/707deabe170541be2a9cba98e95e92f5/seattle&s=json',
+        url: 'http://beermapping.com/webservice/loccity/707deabe170541be2a9cba98e95e92f5/'+this.state.location+'&s=json',
         type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
         data: {}, // Additional parameters here
         dataType: 'json',
         success: function(brew) {
           console.log(brew)
-          this.setState({
-            
-          })
             },
         error: function(err) { alert(err); },
     });
+
+    //google geocoding url
+    //https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=
+    $.ajax({
+      url: 'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key='+'AIzaSyAZR0AqjyaFpY5WK2P7Labc62Jb-lExXNw',
+      type: "GET",
+      data: {},
+      dataType: 'json',
+      success: function(latLon) {
+        console.log(latLon)
+        latLon.results
+      },
+      error: function(err) { alert(err); },
+    });
+
   }
 
   handleLocationChange = (e) => {

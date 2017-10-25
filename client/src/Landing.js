@@ -13,7 +13,7 @@ class Landing extends Component{
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(this.state)
+
     axios.post("/search/", {
       location: this.state.location
     })
@@ -34,7 +34,7 @@ class Landing extends Component{
     });
 
     $.ajax({
-        url: 'http://beermapping.com/webservice/loccity/707deabe170541be2a9cba98e95e92f5/seattle&s=json',
+        url: 'http://beermapping.com/webservice/loccity/707deabe170541be2a9cba98e95e92f5/'+this.state.location+'&s=json',
         type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
         data: {}, // Additional parameters here
         dataType: 'json',

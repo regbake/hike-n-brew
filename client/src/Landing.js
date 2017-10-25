@@ -114,7 +114,8 @@ class Landing extends Component{
     console.dir(this.state.brew);
 
     return (
-      <div className="cover">
+      <div>
+      <div className="header">
 
         <h1>Hike & Brew</h1>
         <h2>Hike & Brew with your crew!</h2>
@@ -123,9 +124,10 @@ class Landing extends Component{
           <input className="searchbox" type='text' placeholder="Search by city..." value={this.state.location} onChange={this.handleLocationChange} />
           <input className="btn-success" type="submit" value="Search" />
         </form>
+          </div>
         <div className="MapContainer">
           <Map initialPosition={{lat: 47.6, lng: -122.33}} />
-        </div>
+          </div>
       </div>
     )
   }

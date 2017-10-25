@@ -4,13 +4,25 @@ import React, { Component } from 'react';
 class Map extends Component {
   componentDidMount() {
     const { lat, lng } = this.props.initialPosition;
-
-    new google.maps.Map(this.refs.map, {
+    console.log(lat, lng, "From maps")
+    this.map = new google.maps.Map(this.refs.map, {
       center: {
         lat,
         lng
       },
       zoom: 8
+    });
+  }
+
+  goToSearch = () => {
+    const { lat, lng } = this.props.initialPosition;
+    console.log(lat, lng)
+    this.map.panTo({lat, lng})
+
+    var marker = new google.maps.Marker({
+      position: {lat: 48, lng: -122},
+      map: this.map,
+      title: 'Hello World!'
     });
   }
 
@@ -21,6 +33,7 @@ class Map extends Component {
         <div ref="map" style={{width: 500, height: 500, border: '1px solid black'}}>
 
         </div>
+        <button onClick={this.goToSearch}>button! </button>
       </div>
     )
   }

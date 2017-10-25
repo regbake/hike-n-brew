@@ -6,11 +6,29 @@ var brewSchema = new mongoose.Schema({
   name: {
     type: String
   },
-  location: {
+  city: {
     type: String
   },
-  description: {
+  overall: {
     type: String
+  },
+  phone: {
+    type: String
+  },
+  status: {
+    type: String
+  },
+  street: {
+    type: String
+  },
+  zip: {
+    type: String
+  },
+  lat: {
+    type: Number
+  },
+  lon: {
+    type: Number
   }
 });
 

@@ -34,35 +34,35 @@ class App extends Component {
   render() {
     return (
       <div>
-      <Router>
-      <div className="App">
+        <Router>
+          <div className="App">
 
 
-      <nav className="navbar navbar-inverse">
-          <div className="container-fluid">
-            <div className="navbar-header">
-              <Link className="navbar-brand" to="/">Hike & Brew</Link>
-            </div>
-            <ul className="nav navbar-nav">
-              <li className="active"><Link to="/">Home</Link></li>
-              <li><Link to="/profile">Profile</Link></li>
-              <li><Link to="/about">About Us</Link></li>
-            </ul>
-            <ul className="nav navbar-nav navbar-right">
-              <li><Link to="signup"><span className="glyphicon glyphicon-user"></span>Sign Up</Link></li>
-              <li><Link to="login"><span className="glyphicon glyphicon-log-in"></span>Login</Link></li>
-            </ul>
+          <nav className="navbar navbar-inverse">
+              <div className="container-fluid">
+                <div className="navbar-header">
+                  <Link className="navbar-brand" to="/">Hike & Brew</Link>
+                </div>
+                <ul className="nav navbar-nav">
+                  <li className="active"><Link to="/">Home</Link></li>
+                  <li><Link to="/profile">Profile</Link></li>
+                  <li><Link to="/about">About Us</Link></li>
+                </ul>
+                <ul className="nav navbar-nav navbar-right">
+                  <li><Link to="signup"><span className="glyphicon glyphicon-user"></span>Sign Up</Link></li>
+                  <li><Link to="login"><span className="glyphicon glyphicon-log-in"></span>Login</Link></li>
+                </ul>
+              </div>
+            </nav>
+
+            <Route exact path="/"  render={(props) => <Landing />}/>
+            <Route path="/profile" />
+            <Route path="/about" />
+            <Route path="/signup" render={(props) => <Signup  lift={this.liftTokenToState} />} />
+            <Route path="/login" render={(props) => <Login  lift={this.liftTokenToState} />} />
+
           </div>
-        </nav>
-
-        <Route exact path="/"  render={(props) => <Landing />}/>
-        <Route path="/profile" />
-        <Route path="/about" />
-        <Route path="/signup" render={(props) => <Signup  lift={this.liftTokenToState} />} />
-        <Route path="/login" render={(props) => <Login  lift={this.liftTokenToState} />} />
-
-      </div>
-      </Router>
+        </Router>
       </div>
     );
   }

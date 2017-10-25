@@ -11,16 +11,18 @@
   background: lightblue;
   padding: 0.5em;
 }
-div.cover{
-  height: 50%;
-  width: 100%;
-  background-image: url(images/mountainbeer.jpg) cover no-repeat;
-}
 .navbar{
   display: inline-block;
   list-style: none;
   font-size: 20px;
   width: 100%;
+}
+div.header{
+  top: 0;
+  margin-top: -74px;
+  height: 50%;
+  width: 100%;
+  background-image: url(https://imgur.com/9iIjVd6) center center no-repeat;
 }
 a{
   text-decoration: none;
@@ -31,19 +33,23 @@ a:hover{
   color: black;
 }
 h1{
-  font-size: 32px;
+  font-size: 48px;
+  margin-top: 150px;
   font-family: 'Domine', serif;
 }
 h2{
+  margin-top: 50px;
   font-size: 20px;
   font-family: 'Nunito Sans', sans-serif;
 }
 .searchbox{
+  margin-top: 150px;
   width: 80%;
   height: 50px;
   font-size: 24px;
 }
 .btn-success{
+  margin-top: 10px;
   height: 50px;
   width: 300px;
 }
@@ -52,4 +58,8 @@ h2{
 }
 .map-header{
   margin-right: 50%;
+}
+.log-in-text{
+  margin: 10px;
+  text-align: center;
 }

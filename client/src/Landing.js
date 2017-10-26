@@ -68,7 +68,6 @@ class Landing extends Component{
         data: {}, // Additional parameters here
         dataType: 'json',
         success: function(brew){
-          console.log(brew);
           this.setState({
             brew: brew
           })

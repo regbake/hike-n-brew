@@ -62,6 +62,8 @@ class App extends Component {
             <Route path="/about" />
             <Route path="/signup" render={(props) => <Signup  lift={this.liftTokenToState} />} />
             <Route path="/login" render={(props) => <Login  lift={this.liftTokenToState} />} />
+            <Route path="/MoreBrews" render={(props) => <MoreBrews />} />
+            <Route path="/MoreHikes" render={(props) => <MoreHikes />} />
 
           </div>
         </Router>

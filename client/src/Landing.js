@@ -119,20 +119,29 @@ class Landing extends Component{
   render() {
     return (
       <div>
-      <div className="header">
+        <div className="header section backgroundImage img-reponsive"  style = {{backgroundImage: `url(${this.state.image})`}}>
 
-        <h1>Hike & Brew</h1>
-        <h2>Hike & Brew with your crew!</h2>
+          <h1>Hike & Brew</h1>
+          <h2>Hike & Brew with your crew!</h2>
 
-        <form onSubmit={this.handleSubmit}>
-          <input className="searchbox" type='text' placeholder="Search by city..." value={this.state.location} onChange={this.handleLocationChange} />
-          <input className="btn-success" type="submit" value="Search" />
-        </form>
-        <div className="MapContainer">
-          <Map initialPosition={{lat: this.state.locationLat, lng: this.state.locationLng}} ref={instance => { this.map = instance; }} />
+          <form onSubmit={this.handleSubmit}>
+            <input className="searchbox" type='text' placeholder="Search by city..." value={this.state.location} onChange={this.handleLocationChange} />
+            <input className="btn-success" type="submit" value="Search" />
+          </form>
         </div>
+        <div className="second-fold section">
+          <div className="map-container">
+            <Map initialPosition={{lat: this.state.locationLat, lng: this.state.locationLng}} ref={instance => { this.map = instance; }} />
           </div>
-
+          <div className="fav-container">
+            <h3>Favorited</h3>
+            <div className="fav"><p>Dummy data</p></div>
+            <div className="fav"><p>Dummy data</p></div>
+            <div className="fav"><p>Dummy data</p></div>
+            <div className="fav"><p>Dummy data</p></div>
+            <div className="fav"><p>Dummy data</p></div>
+          </div>
+        </div>
       </div>
     )
   }

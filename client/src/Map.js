@@ -36,7 +36,7 @@ class Map extends Component {
 
   render() {
     return (
-      <div className="MapContainer" ref="map" style={{width: 800, height: 400, border: '1px solid black'}}>
+      <div className="map-container" ref="map" style={{width: 600, height: 600, border: '1px solid black'}}>
       </div>
     )
   }

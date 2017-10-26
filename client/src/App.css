@@ -1,13 +1,10 @@
-
 .App {
   text-align: center;
 }
-
 .SignupBox {
   background: lightgreen;
   padding: 0.5em;
 }
-
 .LoginBox {
   background: lightblue;
   padding: 0.5em;
@@ -19,11 +16,8 @@
   width: 100%;
 }
 div.header{
-  top: 0;
-  margin-top: -74px;
-  height: 50%;
-  width: 100%;
-  background-image: url("/img/mountainbeer.jpg") center center no-repeat;
+  margin-top: -3.5%;
+
 }
 a{
   text-decoration: none;
@@ -35,37 +29,64 @@ a:hover{
 }
 h1{
   font-size: 48px;
-  margin-top: 150px;
+  padding-top: 100px;
   font-family: 'Domine', serif;
+  color: #212b3d;
+  top: 0;
 }
 h2{
-  margin-top: 50px;
+  padding-bottom: 20px;
+  padding-top: 30px;
   font-size: 20px;
   font-family: 'Nunito Sans', sans-serif;
+  color: #394251;
+}
+h3{
+  border-bottom: 1px solid black;
+  width: 80%;
+  padding-bottom: 10px;
+  margin: 0 auto;
 }
 .searchbox{
-  margin-top: 150px;
   width: 80%;
   height: 50px;
   font-size: 24px;
+  text-align: center;
 }
 .btn-success{
   margin-top: 10px;
   height: 50px;
   width: 300px;
+  margin-bottom: 19%;
 }
-.MapContainer{
-  margin-left:18%;
-}
-.map-header{
-  margin-right: 50%;
+.map-container{
+  margin: 5% 1%;
 }
 .log-in-text{
   margin: 10px;
   text-align: center;
 }
-
 .backgroundImage{
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: 100%;
+}
+.second-fold{
+ background: rgba(131, 147, 153, 1);
+ width: 50%;
+}
+.section{
+  height: 100%;
+  width: 100%;
+}
+.fav-container{
+  width: 40%;
+  height: 80%;
+  border: 1px black solid;
+  float: right;
+  margin-right: 5%;
+  top: 0;
+}
+.fav{
+  height: 20%;
+  width:100%;
 }

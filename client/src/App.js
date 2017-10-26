@@ -34,7 +34,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="backgroundImage" style = {{backgroundImage: `url(${this.state.image})`}}>
+      <div>
         <Router>
           <div className="App">
 

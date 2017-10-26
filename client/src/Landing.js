@@ -10,15 +10,16 @@ class Landing extends Component{
 
     this.state = {
       location: "",
-      hike: {
-        city: "",
-        state: "",
-        description: "",
-        lat: "",
-        lon: "",
-        length: "",
-        thumbnail: ""
-      },
+      // hike: {
+      //   city: "",
+      //   state: "",
+      //   description: "",
+      //   lat: "",
+      //   lon: "",
+      //   length: "",
+      //   thumbnail: ""
+      // },
+      hike: {},
       brew: {
         name: "",
         city: "",
@@ -49,14 +50,16 @@ class Landing extends Component{
         success: function(hike){
           console.log(hike)
           this.setState({
-            city: hike.city,
-            state: hike.state,
-            description: hike.description,
-            lat: hike.lat,
-            lon: hike.lon,
-            length: hike.length,
-            thumbnail: hike.thumbnail
+            // city: hike.places.city,
+            // state: hike.state,
+            // description: hike.description,
+            // lat: hike.lat,
+            // lon: hike.lon,
+            // length: hike.length,
+            // thumbnail: hike.thumbnail
+            hike: hike.places
           })
+          console.log("HERE", this.state.hike);
         }.bind(this),
         error: function(err) { alert(err); },
 

@@ -159,7 +159,6 @@ class Landing extends Component{
 
     //assign some temp data before setting state
     let hikes= [{}, {}, {}, {}, {}];
-    // let hikes= [hike0, hike1, hike2, hike3, hike4];
 
     //api call of trails based on input
     $.ajax({
@@ -168,10 +167,8 @@ class Landing extends Component{
         data: {}, // Additional parameters here
         dataType: 'json',
         success: function(hike){
-          // console.log("hike response: ", hike0);
           // for loop to set the state for each hike
           for (let i = 0; i<hike.places.length; i++) {
-
             hikes[i] = {
               name: hike.places[i].name,
               state: hike.places[i].state,
@@ -182,7 +179,6 @@ class Landing extends Component{
               length: hike.places[i].length
             };
           }
-
           console.log("checking to see the hike states", hikes);
         }.bind(this),
         error: function(err) { alert(err); },
@@ -192,25 +188,46 @@ class Landing extends Component{
         }
     }).then(console.log("searched for hikes"));
 
+    let brews = [{}, {}, {}, {}, {}];
+
     $.ajax({
         url: 'http://beermapping.com/webservice/loccity/707deabe170541be2a9cba98e95e92f5/'+this.state.location+'&s=json',
         type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
         data: {}, // Additional parameters here
         dataType: 'json',
         success: function(brew){
-          console.log("brew response: ", brew)
+          console.log("brew response: ", brew);
 
-          this.setState({ //update state from brew api call
-            brew0: {
-              name: brew[0].name,
-              street: brew[0].street,
-              zip: brew[0].zip,
-              city: brew[0].city,
-              overall: brew[0].overall,
-              phone: brew[0].phone
+          if(brew.length > 5){
+            for (let i=0; i<5; i++) {
+              brews[i] = {
+                name: brew[i].name,
+                city: brew[i].city,
+                overall: brew[i].overall,
+                phone: brew[i].phone,
+                state: brew[i].state,
+                status: brew[i].status,
+                street: brew[i].street,
+                zip: brew[i].zip
+              }
             }
-          });
-          console.log("this.state.brew: ", this.state.brew0)
+          } else {
+            for (let i = 0; i<brew.length; i++) {
+              brews[i] = {
+                name: brew[i].name,
+                city: brew[i].city,
+                overall: brew[i].overall,
+                phone: brew[i].phone,
+                state: brew[i].state,
+                status: brew[i].status,
+                street: brew[i].street,
+                zip: brew[i].zip
+              }
+            }
+          }
+
+          console.log("this.state.brew: ", brews)
+
           //convert addresses to lat/lng
           $.ajax({
             url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+this.state.brew0.street+ "," +this.state.brew0.zip+'&key='+'AIzaSyAZR0AqjyaFpY5WK2P7Labc62Jb-lExXNw',

@@ -15,7 +15,7 @@ var hikeSchema = new mongoose.Schema({
   lat: {
     type: String
   },
-  lon: {
+  lng: {
     type: String
   },
   length: {

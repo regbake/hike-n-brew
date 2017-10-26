@@ -36,7 +36,10 @@ class Map extends Component {
 
   render() {
     return (
-      <div className="MapContainer" ref="map" style={{width: 500, height: 500, border: '1px solid black'}}>
+      <div>
+        <div className="MapContainer" ref="map" style={{width: 500, height: 500, border: '1px solid black'}}>
+        </div>
+        <button onClick={this.goToSearch.bind(this)}>button</button>
       </div>
     )
   }

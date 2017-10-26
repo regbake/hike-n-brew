@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -22,7 +23,7 @@ div.header{
   margin-top: -74px;
   height: 50%;
   width: 100%;
-  background-image: url(https://imgur.com/9iIjVd6) center center no-repeat;
+  background-image: url("/img/mountainbeer.jpg") center center no-repeat;
 }
 a{
   text-decoration: none;
@@ -62,4 +63,9 @@ h2{
 .log-in-text{
   margin: 10px;
   text-align: center;
+}
+
+.backgroundImage{
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }

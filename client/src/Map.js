@@ -10,7 +10,7 @@ class Map extends Component {
         lat,
         lng
       },
-      zoom: 8
+      zoom: 10
     });
   }
 

@@ -52,8 +52,8 @@ class Landing extends Component{
           this.setState({
             locationLat: latLng.results[0].geometry.location.lat,
             locationLng: latLng.results[0].geometry.location.lng
-          })
-          console.log(this.state.locationLng, "CHECK MMME")
+          });
+          this.map.goToSearch();
         }.bind(this),
         error: function(err) { alert(err); },
       })
@@ -137,7 +137,7 @@ class Landing extends Component{
         </form>
           </div>
         <div className="MapContainer">
-          <Map initialPosition={{lat: this.state.locationLat, lng: this.state.locationLng}} />
+          <Map initialPosition={{lat: this.state.locationLat, lng: this.state.locationLng}} ref={instance => { this.map = instance; }} />
         </div>
       </div>
     )

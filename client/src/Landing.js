@@ -3,6 +3,8 @@ import axios from "axios";
 import $ from "jquery";
 import Map from "./Map";
 import MountainBeer from "./images/mountainbeer.jpg";
+import MoreBrews from "./MoreBrews";
+import MoreTrails from "./MoreTrails";
 
 
 class Landing extends Component{
@@ -119,19 +121,25 @@ class Landing extends Component{
   render() {
     return (
       <div>
-      <div className="header">
+        <div className="header">
 
-        <h1>Hike & Brew</h1>
-        <h2>Hike & Brew with your crew!</h2>
+          <h1>Hike & Brew</h1>
+          <h2>Hike & Brew with your crew!</h2>
 
-        <form onSubmit={this.handleSubmit}>
-          <input className="searchbox" type='text' placeholder="Search by city..." value={this.state.location} onChange={this.handleLocationChange} />
-          <input className="btn-success" type="submit" value="Search" />
-        </form>
-        <div className="MapContainer">
-          <Map initialPosition={{lat: this.state.locationLat, lng: this.state.locationLng}} ref={instance => { this.map = instance; }} />
-        </div>
+          <form onSubmit={this.handleSubmit}>
+            <input className="searchbox" type='text' placeholder="Search by city..." value={this.state.location} onChange={this.handleLocationChange} />
+            <input className="btn-success" type="submit" value="Search" />
+          </form>
+          <div className="MapContainer">
+            <Map initialPosition={{lat: this.state.locationLat, lng: this.state.locationLng}} ref={instance => { this.map = instance; }} />
           </div>
+        </div>
+        <div>
+          <MoreBrews />
+        </div>
+        <div>
+          <MoreTrails />
+        </div>
 
       </div>
     )

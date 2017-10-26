@@ -17,122 +17,8 @@ class Landing extends Component{
       locationLat: 47.6, //seattle lat/lng to start
       locationLng: -122.33,
       //store the first 5 hikes, 0 index naming
-      hike0: {
-        name: "",
-        state: "",
-        city: "",
-        lat: "",
-        lng: "",
-        description: "",
-        length: ""
-      },
-      hike1: {
-        name: "",
-        state: "",
-        city: "",
-        lat: "",
-        lng: "",
-        description: "",
-        length: ""
-      },
-      hike2: {
-        name: "",
-        state: "",
-        city: "",
-        lat: "",
-        lng: "",
-        description: "",
-        length: ""
-      },
-      hike3: {
-        name: "",
-        state: "",
-        city: "",
-        lat: "",
-        lng: "",
-        description: "",
-        length: ""
-      },
-      hike4: {
-        name: "",
-        state: "",
-        city: "",
-        lat: "",
-        lng: "",
-        description: "",
-        length: ""
-      },
-      //store the first 5 brews, 0 index naming
-      brew0: {
-        name: "",
-        city: "",
-        overall: "",
-        phone: "",
-        state: "",
-        status: "",
-        street: "",
-        zip: ""
-      },
-      brew0Location: {
-        lat: "",
-        lng: ""
-      },
-      brew1: {
-        name: "",
-        city: "",
-        overall: "",
-        phone: "",
-        state: "",
-        status: "",
-        street: "",
-        zip: ""
-      },
-      brew1Location: {
-        lat: "",
-        lng: ""
-      },
-      brew2: {
-        name: "",
-        city: "",
-        overall: "",
-        phone: "",
-        state: "",
-        status: "",
-        street: "",
-        zip: ""
-      },
-      brew2Location: {
-        lat: "",
-        lng: ""
-      },
-      brew3: {
-        name: "",
-        city: "",
-        overall: "",
-        phone: "",
-        state: "",
-        status: "",
-        street: "",
-        zip: ""
-      },
-      brew3Location: {
-        lat: "",
-        lng: ""
-      },
-      brew4: {
-        name: "",
-        city: "",
-        overall: "",
-        phone: "",
-        state: "",
-        status: "",
-        street: "",
-        zip: ""
-      },
-      brew4Location: {
-        lat: "",
-        lng: ""
-      }
+      hikes: [],
+      brews: []
     };
 
   }
@@ -150,6 +36,7 @@ class Landing extends Component{
         data: {},
         dataType: 'json',
         success: function(latLng) {
+          //convert lat/lng of search location
           this.setState({
             locationLat: latLng.results[0].geometry.location.lat,
             locationLng: latLng.results[0].geometry.location.lng
@@ -160,7 +47,7 @@ class Landing extends Component{
       }));
 
     //assign some temp data before setting state
-    let hikes= [{}, {}, {}, {}, {}];
+    let tempHikes= [{}, {}, {}, {}, {}];
 
     //api call of trails based on input
     $.ajax({
@@ -172,7 +59,7 @@ class Landing extends Component{
 
           // for loop to set the state for each hike
           for (let i = 0; i<hike.places.length; i++) {
-            hikes[i] = {
+            tempHikes[i] = {
               name: hike.places[i].name,
               state: hike.places[i].state,
               city: hike.places[i].city,
@@ -182,7 +69,6 @@ class Landing extends Component{
               length: hike.places[i].length
             };
           }
-          console.log("checking to see the hike states", hikes);
         }.bind(this),
         error: function(err) { alert(err); },
 
@@ -191,7 +77,7 @@ class Landing extends Component{
         }
     }).then(console.log("searched for hikes"));
 
-    let brews = [{}, {}, {}, {}, {}];
+    let tempBrews = [{}, {}, {}, {}, {}];
 
     $.ajax({
         url: 'http://beermapping.com/webservice/loccity/707deabe170541be2a9cba98e95e92f5/'+this.state.location+'&s=json',
@@ -203,7 +89,7 @@ class Landing extends Component{
 
           if(brew.length > 5){
             for (let i=0; i<5; i++) {
-              brews[i] = {
+              tempBrews[i] = {
                 name: brew[i].name,
                 city: brew[i].city,
                 overall: brew[i].overall,
@@ -216,7 +102,7 @@ class Landing extends Component{
             }
           } else {
             for (let i = 0; i<brew.length; i++) {
-              brews[i] = {
+              tempBrews[i] = {
                 name: brew[i].name,
                 city: brew[i].city,
                 overall: brew[i].overall,
@@ -229,21 +115,27 @@ class Landing extends Component{
             }
           }
 
-          console.log("after the brew loop ", brews)
+          console.log("after the brew loop ", tempBrews)
 
-          //convert addresses to lat/lng
-          $.ajax({
-            url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+this.state.brew0.street+ "," +this.state.brew0.zip+'&key='+'AIzaSyAZR0AqjyaFpY5WK2P7Labc62Jb-lExXNw',
-            type: "GET",
-            data: {},
-            dataType: 'json',
-            success: function(latLng) {
-              //CONVERT THE ADDRESS TO LAT/LNG HERE
+          for (let i=0; i<tempBrews.length; i++){
+            //convert addresses to lat/lng
+            $.ajax({
+              url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+tempBrews[i].street+ "," +tempBrews[i].zip+'&key='+'AIzaSyAZR0AqjyaFpY5WK2P7Labc62Jb-lExXNw',
+              type: "GET",
+              data: {},
+              dataType: 'json',
+              success: function(latLng) {
+                //CONVERT THE ADDRESS TO LAT/LNG HERE
+                tempBrews[i].lat = latLng.results[0].geometry.location.lat;
+                tempBrews[i].lng = latLng.results[0].geometry.location.lng;
 
-              console.log("lat/lng converstion here ", this.state.brew0Location)
-            }.bind(this),
-            error: function(err) { alert(err); },
-          })
+                // console.log("lat/lng converstion here ", i, latLng, tempBrews)
+                this.setState({brews: tempBrews});
+                this.setState({hikes: tempHikes});
+              }.bind(this),
+              error: function(err) { alert(err); },
+            })
+          }
         }.bind(this),
         error: function(err) { alert(err); },
     });
@@ -265,7 +157,6 @@ class Landing extends Component{
           </form>
 
         </div>
-
         <div className="second-fold section">
           <div className="map-container">
             <Map initialPosition={{lat: this.state.locationLat, lng: this.state.locationLng}} ref={instance => { this.map = instance; }} />

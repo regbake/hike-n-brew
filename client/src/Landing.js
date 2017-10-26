@@ -14,124 +14,122 @@ class Landing extends Component{
       location: "", //set state location on search
       locationLat: 47.6, //seattle lat/lng to start
       locationLng: -122.33,
-      hike: { //store the first 5 hikes, 0 index naming
-        hike0: {
-          name: "",
-          state: "",
-          city: "",
-          lat: "",
-          lng: "",
-          description: "",
-          length: ""
-        },
-        hike1: {
-          name: "",
-          state: "",
-          city: "",
-          lat: "",
-          lng: "",
-          description: "",
-          length: ""
-        },
-        hike2: {
-          name: "",
-          state: "",
-          city: "",
-          lat: "",
-          lng: "",
-          description: "",
-          length: ""
-        },
-        hike3: {
-          name: "",
-          state: "",
-          city: "",
-          lat: "",
-          lng: "",
-          description: "",
-          length: ""
-        },
-        hike4: {
-          name: "",
-          state: "",
-          city: "",
-          lat: "",
-          lng: "",
-          description: "",
-          length: ""
-        }
+      //store the first 5 hikes, 0 index naming
+      hike0: {
+        name: "",
+        state: "",
+        city: "",
+        lat: "",
+        lng: "",
+        description: "",
+        length: ""
       },
-      brew: { //store the first 5 brews, 0 index naming
-        brew0: {
-          name: "",
-          city: "",
-          overall: "",
-          phone: "",
-          state: "",
-          status: "",
-          street: "",
-          zip: ""
-        },
-        brew0Location: {
-          lat: "",
-          lng: ""
-        },
-        brew1: {
-          name: "",
-          city: "",
-          overall: "",
-          phone: "",
-          state: "",
-          status: "",
-          street: "",
-          zip: ""
-        },
-        brew1Location: {
-          lat: "",
-          lng: ""
-        },
-        brew2: {
-          name: "",
-          city: "",
-          overall: "",
-          phone: "",
-          state: "",
-          status: "",
-          street: "",
-          zip: ""
-        },
-        brew2Location: {
-          lat: "",
-          lng: ""
-        },
-        brew3: {
-          name: "",
-          city: "",
-          overall: "",
-          phone: "",
-          state: "",
-          status: "",
-          street: "",
-          zip: ""
-        },
-        brew3Location: {
-          lat: "",
-          lng: ""
-        },
-        brew4: {
-          name: "",
-          city: "",
-          overall: "",
-          phone: "",
-          state: "",
-          status: "",
-          street: "",
-          zip: ""
-        },
-        brew4Location: {
-          lat: "",
-          lng: ""
-        }
+      hike1: {
+        name: "",
+        state: "",
+        city: "",
+        lat: "",
+        lng: "",
+        description: "",
+        length: ""
+      },
+      hike2: {
+        name: "",
+        state: "",
+        city: "",
+        lat: "",
+        lng: "",
+        description: "",
+        length: ""
+      },
+      hike3: {
+        name: "",
+        state: "",
+        city: "",
+        lat: "",
+        lng: "",
+        description: "",
+        length: ""
+      },
+      hike4: {
+        name: "",
+        state: "",
+        city: "",
+        lat: "",
+        lng: "",
+        description: "",
+        length: ""
+      },
+      //store the first 5 brews, 0 index naming
+      brew0: {
+        name: "",
+        city: "",
+        overall: "",
+        phone: "",
+        state: "",
+        status: "",
+        street: "",
+        zip: ""
+      },
+      brew0Location: {
+        lat: "",
+        lng: ""
+      },
+      brew1: {
+        name: "",
+        city: "",
+        overall: "",
+        phone: "",
+        state: "",
+        status: "",
+        street: "",
+        zip: ""
+      },
+      brew1Location: {
+        lat: "",
+        lng: ""
+      },
+      brew2: {
+        name: "",
+        city: "",
+        overall: "",
+        phone: "",
+        state: "",
+        status: "",
+        street: "",
+        zip: ""
+      },
+      brew2Location: {
+        lat: "",
+        lng: ""
+      },
+      brew3: {
+        name: "",
+        city: "",
+        overall: "",
+        phone: "",
+        state: "",
+        status: "",
+        street: "",
+        zip: ""
+      },
+      brew3Location: {
+        lat: "",
+        lng: ""
+      },
+      brew4: {
+        name: "",
+        city: "",
+        overall: "",
+        phone: "",
+        state: "",
+        status: "",
+        street: "",
+        zip: ""
+      },
+      brew4Location: {
+        lat: "",
+        lng: ""
       }
     };
   }
@@ -186,7 +184,7 @@ class Landing extends Component{
         success: function(brew){
           console.log("brew response: ", brew)
           this.setState({ //update state from brew api call
-            brew: {
+            brew0: {
               name: brew[0].name,
               street: brew[0].street,
               zip: brew[0].zip,
@@ -195,22 +193,22 @@ class Landing extends Component{
               phone: brew[0].phone
             }
           });
-          console.log("this.state.brew: ", this.state.brew)
+          console.log("this.state.brew: ", this.state.brew0)
           //convert addresses to lat/lng
           $.ajax({
-            url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+this.state.brew.street+ "," +this.state.brew.zip+'&key='+'AIzaSyAZR0AqjyaFpY5WK2P7Labc62Jb-lExXNw',
+            url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+this.state.brew0.street+ "," +this.state.brew0.zip+'&key='+'AIzaSyAZR0AqjyaFpY5WK2P7Labc62Jb-lExXNw',
             type: "GET",
             data: {},
             dataType: 'json',
             success: function(latLng) {
               // console.log("at the converted address/latLng: ", latLng.results[0].geometry.location);
               this.setState({ //update state brew/latLng
-                brew: {
+                brew0Location: {
                   lat: latLng.results[0].geometry.location.lat,
                   lng: latLng.results[0].geometry.location.lng
                 }
               });
-              console.log("this.state.brew: ", this.state.brew)
+              console.log("this.state.brew: ", this.state.brew0Location)
             }.bind(this),
             error: function(err) { alert(err); },
           })

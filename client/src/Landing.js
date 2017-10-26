@@ -132,6 +132,7 @@ class Landing extends Component{
         lng: ""
       }
     };
+
   }
 
 //this is where all the APIs queries and AJAX calls are
@@ -154,8 +155,11 @@ class Landing extends Component{
           this.map.goToSearch(); //send the search lat/lng to Map
         }.bind(this),
         error: function(err) { alert(err); },
-      })
-    )
+      }));
+
+    //assign some temp data before setting state
+    let hikes= [{}, {}, {}, {}, {}];
+    // let hikes= [hike0, hike1, hike2, hike3, hike4];
 
     //api call of trails based on input
     $.ajax({
@@ -164,10 +168,22 @@ class Landing extends Component{
         data: {}, // Additional parameters here
         dataType: 'json',
         success: function(hike){
-          console.log("hike response: ", hike)
-          this.setState({
-            hike: hike.places
-          })
+          // console.log("hike response: ", hike0);
+          // for loop to set the state for each hike
+          for (let i = 0; i<hike.places.length; i++) {
+
+            hikes[i] = {
+              name: hike.places[i].name,
+              state: hike.places[i].state,
+              city: hike.places[i].city,
+              lat: hike.places[i].lat,
+              lng: hike.places[i].lon,
+              description: hike.places[i].description,
+              length: hike.places[i].length
+            };
+          }
+
+          console.log("checking to see the hike states", hikes);
         }.bind(this),
         error: function(err) { alert(err); },
 
@@ -183,6 +199,7 @@ class Landing extends Component{
         dataType: 'json',
         success: function(brew){
           console.log("brew response: ", brew)
+
           this.setState({ //update state from brew api call
             brew0: {
               name: brew[0].name,

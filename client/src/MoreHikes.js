@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-class MoreTrails extends Component {
+class MoreHikes extends Component {
   componentDidMount() {
-    const { hike } = this.props.initialTrailsData;
+    const hike = this.props.initialHikesData;
   }
   constructor(props) {
     super(props);
@@ -13,6 +13,7 @@ class MoreTrails extends Component {
   };
 
 render(){
+  const hike = this.props.initialHikesData;
   return(
     <div>
       <h1 className="name">{this.state.name}</h1>
@@ -24,4 +25,4 @@ render(){
   )
  }
 }
-export default MoreTrails;
+export default MoreHikes;

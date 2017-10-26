@@ -2,17 +2,19 @@ import React, { Component } from 'react';
 
 class MoreBrews extends Component {
   componentDidMount(){
-    const { brew } = this.props.initialBrewData;
+    const brew = this.props.initialBrewData;
+    console.log(this.state);
   }
   constructor(props) {
     super(props);
-
+    const brew = this.props.initialBrewData;
     this.state = {
-
+        brew:brew
     }
   };
-
 render(){
+  const brew = this.props.initialBrewData;
+  console.log(brew);
   return(
     <div>
       <h1 className="name">{this.state.name}</h1>
@@ -22,9 +24,8 @@ render(){
         <p className="street">{this.state.street}</p>
 
       <div className="overall">
-        <p>{this.state.overall}{"/100"}</p>
+        <p>{brew.overall}{"/100"}</p>
       </div>
-
     </div>
   )
  }

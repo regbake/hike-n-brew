@@ -12,6 +12,8 @@ import Brewery from "./Brewery";
 import Map from "./Map";
 import AuthenticatedRoute from './AuthenticatedRoute';
 import MountainBeer from "./images/mountainbeer.jpg";
+import MoreBrews from "./MoreBrews";
+import MoreHikes from "./MoreHikes"
 // import MapContainer from './MapContainer';
 
 class App extends Component {

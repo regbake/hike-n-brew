@@ -4,7 +4,7 @@ import $ from "jquery";
 import Map from "./Map";
 import MountainBeer from "./images/mountainbeer.jpg";
 import MoreBrews from "./MoreBrews";
-import MoreTrails from "./MoreTrails";
+import MoreHikes from "./MoreHikes";
 
 
 class Landing extends Component{
@@ -118,10 +118,7 @@ class Landing extends Component{
         <div className="MoreBrews">
           <MoreBrews initialBrewData= {{brew:this.state.brew}}/>
         </div>
-        <div className="MoreTrails">
-          <MoreTrails initialTrailsData= {{hike:this.state.hike}} />
-        </div>
-
+          <MoreHikes initialHikeData={{hike:this.state.hike}} />
       </div>
     )
   }

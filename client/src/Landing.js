@@ -229,7 +229,7 @@ class Landing extends Component{
             }
           }
 
-          console.log("this.state.brew: ", brews)
+          console.log("after the brew loop ", brews)
 
           //convert addresses to lat/lng
           $.ajax({
@@ -238,14 +238,9 @@ class Landing extends Component{
             data: {},
             dataType: 'json',
             success: function(latLng) {
-              // console.log("at the converted address/latLng: ", latLng.results[0].geometry.location);
-              this.setState({ //update state brew/latLng
-                brew0Location: {
-                  lat: latLng.results[0].geometry.location.lat,
-                  lng: latLng.results[0].geometry.location.lng
-                }
-              });
-              console.log("this.state.brew: ", this.state.brew0Location)
+              //CONVERT THE ADDRESS TO LAT/LNG HERE
+
+              console.log("lat/lng converstion here ", this.state.brew0Location)
             }.bind(this),
             error: function(err) { alert(err); },
           })

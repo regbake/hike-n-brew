@@ -18,6 +18,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      image: MountainBeer,
       token: {},
       user: {}
     }
@@ -33,10 +34,9 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="backgroundImage" style = {{backgroundImage: `url(${this.state.image})`}}>
         <Router>
           <div className="App">
-
 
           <nav className="navbar navbar-inverse">
               <div className="container-fluid">

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import $ from "jquery";
 import Map from "./Map";
+import MountainBeer from "./images/mountainbeer.jpg";
 
 
 class Landing extends Component{
@@ -9,6 +10,7 @@ class Landing extends Component{
     super(props);
 
     this.state = {
+      image: MountainBeer,
       location: "",
       locationLat: 47.6,
       locationLng: -122.33,
@@ -28,6 +30,7 @@ class Landing extends Component{
         city: "",
         overall: "",
         phone: "",
+        state: "",
         status: "",
         street: "",
         zip: "",
@@ -135,10 +138,11 @@ class Landing extends Component{
           <input className="searchbox" type='text' placeholder="Search by city..." value={this.state.location} onChange={this.handleLocationChange} />
           <input className="btn-success" type="submit" value="Search" />
         </form>
-          </div>
         <div className="MapContainer">
           <Map initialPosition={{lat: this.state.locationLat, lng: this.state.locationLng}} />
         </div>
+          </div>
+
       </div>
     )
   }

@@ -17,18 +17,7 @@ class Landing extends Component{
       locationLat: 47.6,
       locationLng: -122.33,
       hike: {},
-      brew: {
-        name: "",
-        city: "",
-        overall: "",
-        phone: "",
-        state: "",
-        status: "",
-        street: "",
-        zip: "",
-        lat: "",
-        lng: ""
-      }
+      brew: {}
     };
   }
 
@@ -61,7 +50,7 @@ class Landing extends Component{
         data: {}, // Additional parameters here
         dataType: 'json',
         success: function(hike){
-          console.log(hike)
+          console.log(hike);
           this.setState({
             hike: hike.places
           })
@@ -79,17 +68,11 @@ class Landing extends Component{
         data: {}, // Additional parameters here
         dataType: 'json',
         success: function(brew){
-          console.log(brew)
+          console.log(brew);
           this.setState({
-            name: brew.name,
-            city: brew.city,
-            overall: brew.overall,
-            phone: brew.phone,
-            street: brew.street,
-            zip: brew.zip,
-            lat: brew.lat,
-            lng: brew.lng
+            brew: brew
           })
+          console.log(this.state);
         }.bind(this),
         error: function(err) { alert(err); },
 
@@ -115,8 +98,6 @@ class Landing extends Component{
   handleLocationChange = (e) => {
     this.setState({location: e.target.value});
   }
-
-
 
   render() {
     return (

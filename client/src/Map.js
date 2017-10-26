@@ -24,7 +24,10 @@ class Map extends Component {
     })
 
     var marker = new google.maps.Marker({
-      position: {lat: 48, lng: -122},
+      position: {
+        lat: 48,
+        lng: -122
+      },
       map: this.map,
       title: 'Hello World!'
     });

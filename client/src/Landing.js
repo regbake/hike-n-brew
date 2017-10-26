@@ -11,25 +11,132 @@ class Landing extends Component{
 
     this.state = {
       image: MountainBeer,
-      location: "",
-      locationLat: 47.6,
+      location: "", //set state location on search
+      locationLat: 47.6, //seattle lat/lng to start
       locationLng: -122.33,
-      hike: {},
-      brew: {
-        name: "",
-        city: "",
-        overall: "",
-        phone: "",
-        state: "",
-        status: "",
-        street: "",
-        zip: "",
-        lat: "",
-        lng: ""
+      hike: { //store the first 5 hikes, 0 index naming
+        hike0: {
+          name: "",
+          state: "",
+          city: "",
+          lat: "",
+          lng: "",
+          description: "",
+          length: ""
+        },
+        hike1: {
+          name: "",
+          state: "",
+          city: "",
+          lat: "",
+          lng: "",
+          description: "",
+          length: ""
+        },
+        hike2: {
+          name: "",
+          state: "",
+          city: "",
+          lat: "",
+          lng: "",
+          description: "",
+          length: ""
+        },
+        hike3: {
+          name: "",
+          state: "",
+          city: "",
+          lat: "",
+          lng: "",
+          description: "",
+          length: ""
+        },
+        hike4: {
+          name: "",
+          state: "",
+          city: "",
+          lat: "",
+          lng: "",
+          description: "",
+          length: ""
+        }
+      },
+      brew: { //store the first 5 brews, 0 index naming
+        brew0: {
+          name: "",
+          city: "",
+          overall: "",
+          phone: "",
+          state: "",
+          status: "",
+          street: "",
+          zip: ""
+        },
+        brew0Location: {
+          lat: "",
+          lng: ""
+        },
+        brew1: {
+          name: "",
+          city: "",
+          overall: "",
+          phone: "",
+          state: "",
+          status: "",
+          street: "",
+          zip: ""
+        },
+        brew1Location: {
+          lat: "",
+          lng: ""
+        },
+        brew2: {
+          name: "",
+          city: "",
+          overall: "",
+          phone: "",
+          state: "",
+          status: "",
+          street: "",
+          zip: ""
+        },
+        brew2Location: {
+          lat: "",
+          lng: ""
+        },
+        brew3: {
+          name: "",
+          city: "",
+          overall: "",
+          phone: "",
+          state: "",
+          status: "",
+          street: "",
+          zip: ""
+        },
+        brew3Location: {
+          lat: "",
+          lng: ""
+        },
+        brew4: {
+          name: "",
+          city: "",
+          overall: "",
+          phone: "",
+          state: "",
+          status: "",
+          street: "",
+          zip: ""
+        },
+        brew4Location: {
+          lat: "",
+          lng: ""
+        }
       }
     };
   }
 
+//this is where all the APIs queries and AJAX calls are
   handleSubmit = (e) => {
     e.preventDefault();
 
@@ -59,7 +166,7 @@ class Landing extends Component{
         data: {}, // Additional parameters here
         dataType: 'json',
         success: function(hike){
-          console.log(hike)
+          console.log("hike response: ", hike)
           this.setState({
             hike: hike.places
           })
@@ -69,7 +176,7 @@ class Landing extends Component{
         beforeSend: function(xhr) { //what's the beforeSend call?
         xhr.setRequestHeader("X-Mashape-Authorization", "9TRm77y42fmshbKC8mhoJDbFf111p1mClnPjsn0iUmYlE5gzRa"); // Enter here your Mashape key
         }
-    }).then(console.log("hey"));
+    }).then(console.log("searched for hikes"));
 
     $.ajax({
         url: 'http://beermapping.com/webservice/loccity/707deabe170541be2a9cba98e95e92f5/'+this.state.location+'&s=json',
@@ -77,44 +184,45 @@ class Landing extends Component{
         data: {}, // Additional parameters here
         dataType: 'json',
         success: function(brew){
-          console.log(brew)
-          this.setState({
-            name: brew.name,
-            city: brew.city,
-            overall: brew.overall,
-            phone: brew.phone,
-            street: brew.street,
-            zip: brew.zip,
-            lat: brew.lat,
-            lng: brew.lng
+          console.log("brew response: ", brew)
+          this.setState({ //update state from brew api call
+            brew: {
+              name: brew[0].name,
+              street: brew[0].street,
+              zip: brew[0].zip,
+              city: brew[0].city,
+              overall: brew[0].overall,
+              phone: brew[0].phone
+            }
+          });
+          console.log("this.state.brew: ", this.state.brew)
+          //convert addresses to lat/lng
+          $.ajax({
+            url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+this.state.brew.street+ "," +this.state.brew.zip+'&key='+'AIzaSyAZR0AqjyaFpY5WK2P7Labc62Jb-lExXNw',
+            type: "GET",
+            data: {},
+            dataType: 'json',
+            success: function(latLng) {
+              // console.log("at the converted address/latLng: ", latLng.results[0].geometry.location);
+              this.setState({ //update state brew/latLng
+                brew: {
+                  lat: latLng.results[0].geometry.location.lat,
+                  lng: latLng.results[0].geometry.location.lng
+                }
+              });
+              console.log("this.state.brew: ", this.state.brew)
+            }.bind(this),
+            error: function(err) { alert(err); },
           })
+
         }.bind(this),
         error: function(err) { alert(err); },
-
     });
-
-//*****The stuff below is working but just put elsewhere
-    //google geocoding url
-    //https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=
-    // $.ajax({
-    //   url: 'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key='+'AIzaSyAZR0AqjyaFpY5WK2P7Labc62Jb-lExXNw',
-    //   type: "GET",
-    //   data: {},
-    //   dataType: 'json',
-    //   success: function(latLng) {
-    //     console.log(latLng)
-    //     latLng.results
-    //   },
-    //   error: function(err) { alert(err); },
-    // });
-
   }
 
   handleLocationChange = (e) => {
     this.setState({location: e.target.value});
   }
-
-
 
   render() {
     return (

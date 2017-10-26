@@ -12,16 +12,6 @@ class Landing extends Component{
       location: "",
       locationLat: 47.6,
       locationLng: -122.33,
-      // hike: {
-      //   city: "",
-      //   state: "",
-      //   description: "",
-      //   lat: "",
-      //   lon: "",
-      //   lng: "",
-      //   length: "",
-      //   thumbnail: ""
-      // },
       hike: {},
       brew: {
         name: "",
@@ -53,7 +43,7 @@ class Landing extends Component{
             locationLat: latLng.results[0].geometry.location.lat,
             locationLng: latLng.results[0].geometry.location.lng
           });
-          this.map.goToSearch();
+          this.map.goToSearch(); //send the search lat/lng to Map
         }.bind(this),
         error: function(err) { alert(err); },
       })

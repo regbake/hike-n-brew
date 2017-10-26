@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 class Map extends Component {
   componentDidMount() {
     const { lat, lng } = this.props.initialPosition;
-    console.log(lat, lng, "From maps")
+
     this.map = new google.maps.Map(this.refs.map, {
       center: {
         lat,
@@ -37,7 +37,7 @@ class Map extends Component {
   render() {
     return (
       <div>
-        <div className="MapContainer" ref="map" style={{width: 500, height: 500, border: '1px solid black'}}>
+        <div className="MapContainer" ref="map" style={{width: 800, height: 400, border: '1px solid black'}}>
         </div>
         <button onClick={this.goToSearch.bind(this)}>button</button>
       </div>

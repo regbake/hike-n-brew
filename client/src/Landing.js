@@ -3,6 +3,8 @@ import axios from "axios";
 import $ from "jquery";
 import Map from "./Map";
 import MountainBeer from "./images/mountainbeer.jpg";
+import MoreBrews from "./MoreBrews";
+import MoreHikes from "./MoreHikes";
 
 
 class Landing extends Component{
@@ -15,18 +17,7 @@ class Landing extends Component{
       locationLat: 47.6,
       locationLng: -122.33,
       hike: {},
-      brew: {
-        name: "",
-        city: "",
-        overall: "",
-        phone: "",
-        state: "",
-        status: "",
-        street: "",
-        zip: "",
-        lat: "",
-        lng: ""
-      }
+      brew: {}
     };
   }
 
@@ -59,7 +50,7 @@ class Landing extends Component{
         data: {}, // Additional parameters here
         dataType: 'json',
         success: function(hike){
-          console.log(hike)
+          console.log(hike);
           this.setState({
             hike: hike.places
           })
@@ -77,17 +68,10 @@ class Landing extends Component{
         data: {}, // Additional parameters here
         dataType: 'json',
         success: function(brew){
-          console.log(brew)
           this.setState({
-            name: brew.name,
-            city: brew.city,
-            overall: brew.overall,
-            phone: brew.phone,
-            street: brew.street,
-            zip: brew.zip,
-            lat: brew.lat,
-            lng: brew.lng
+            brew: brew
           })
+          console.log(this.state);
         }.bind(this),
         error: function(err) { alert(err); },
 
@@ -114,20 +98,24 @@ class Landing extends Component{
     this.setState({location: e.target.value});
   }
 
-
-
   render() {
     return (
       <div>
         <div className="header section backgroundImage img-reponsive"  style = {{backgroundImage: `url(${this.state.image})`}}>
-
           <h1>Hike & Brew</h1>
           <h2>Hike & Brew with your crew!</h2>
-
           <form onSubmit={this.handleSubmit}>
             <input className="searchbox" type='text' placeholder="Search by city..." value={this.state.location} onChange={this.handleLocationChange} />
             <input className="btn-success" type="submit" value="Search" />
           </form>
+
+        </div>
+
+        <div className="MoreBrews">
+          <MoreBrews initialBrewData= {{brew:this.state.brew}}/>
+        </div>
+        <div>
+          <MoreHikes initialHikeData={{hike:this.state.hike}} />
         </div>
         <div className="second-fold section">
           <div className="map-container">
@@ -142,6 +130,7 @@ class Landing extends Component{
             <div className="fav"><p>Dummy data</p></div>
           </div>
         </div>
+
       </div>
     )
   }

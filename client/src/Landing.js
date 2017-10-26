@@ -116,23 +116,10 @@ class Landing extends Component{
           </div>
         </div>
         <div className="MoreBrews">
-          <MoreBrews initialBrewData=
-            {{overall: this.state.overall,
-              street: this.state.street,
-              phone: this.state.phone,
-              status: this.state.status,
-              city: this.state.city,
-              state: this.state.state,
-              name: this.state.name }}/>
+          <MoreBrews initialBrewData= {{brew:this.state.brew}}/>
         </div>
         <div className="MoreTrails">
-          <MoreTrails initialTrailsData=
-            {{name: this.state.name,
-              city: this.state.city,
-              state: this.state.state,
-              description: this.state.description,
-              length: this.state.length,
-              thumbnail: this.state.thumbnail }} />
+          <MoreTrails initialTrailsData= {{hike:this.state.hike}} />
         </div>
 
       </div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class MoreBrews extends Component {
   componentDidMount(){
-    const { name,city,state,status,phone,street } = this.props.initialBrewData;
+    const { brew } = this.props.initialBrewData;
   }
   constructor(props) {
     super(props);

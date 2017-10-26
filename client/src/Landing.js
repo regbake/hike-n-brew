@@ -266,12 +266,6 @@ class Landing extends Component{
 
         </div>
 
-        <div className="MoreBrews">
-          <MoreBrews initialBrewData= {{brew:this.state.brew}}/>
-        </div>
-        <div>
-          <MoreHikes initialHikeData={{hike:this.state.hike}} />
-        </div>
         <div className="second-fold section">
           <div className="map-container">
             <Map initialPosition={{lat: this.state.locationLat, lng: this.state.locationLng}} ref={instance => { this.map = instance; }} />
@@ -285,7 +279,6 @@ class Landing extends Component{
             <div className="fav"><p>Dummy data</p></div>
           </div>
         </div>
-
       </div>
     )
   }

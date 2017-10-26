@@ -71,7 +71,7 @@ h3{
   background-size: 100%;
 }
 .second-fold{
- background: rgba(131, 147, 153, 1);
+ background: rgba(131, 147, 153, 0.5);
  width: 50%;
 }
 .section{

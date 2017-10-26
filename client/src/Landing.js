@@ -3,6 +3,8 @@ import axios from "axios";
 import $ from "jquery";
 import Map from "./Map";
 import MountainBeer from "./images/mountainbeer.jpg";
+import MoreBrews from "./MoreBrews";
+import MoreHikes from "./MoreHikes";
 
 
 class Landing extends Component{
@@ -167,6 +169,7 @@ class Landing extends Component{
         data: {}, // Additional parameters here
         dataType: 'json',
         success: function(hike){
+
           // for loop to set the state for each hike
           for (let i = 0; i<hike.places.length; i++) {
             hikes[i] = {
@@ -246,7 +249,6 @@ class Landing extends Component{
             }.bind(this),
             error: function(err) { alert(err); },
           })
-
         }.bind(this),
         error: function(err) { alert(err); },
     });
@@ -259,19 +261,35 @@ class Landing extends Component{
   render() {
     return (
       <div>
-      <div className="header">
+        <div className="header section backgroundImage img-reponsive"  style = {{backgroundImage: `url(${this.state.image})`}}>
+          <h1>Hike & Brew</h1>
+          <h2>Hike & Brew with your crew!</h2>
+          <form onSubmit={this.handleSubmit}>
+            <input className="searchbox" type='text' placeholder="Search by city..." value={this.state.location} onChange={this.handleLocationChange} />
+            <input className="btn-success" type="submit" value="Search" />
+          </form>
 
-        <h1>Hike & Brew</h1>
-        <h2>Hike & Brew with your crew!</h2>
-
-        <form onSubmit={this.handleSubmit}>
-          <input className="searchbox" type='text' placeholder="Search by city..." value={this.state.location} onChange={this.handleLocationChange} />
-          <input className="btn-success" type="submit" value="Search" />
-        </form>
-        <div className="MapContainer">
-          <Map initialPosition={{lat: this.state.locationLat, lng: this.state.locationLng}} ref={instance => { this.map = instance; }} />
         </div>
+
+        <div className="MoreBrews">
+          <MoreBrews initialBrewData= {{brew:this.state.brew}}/>
+        </div>
+        <div>
+          <MoreHikes initialHikeData={{hike:this.state.hike}} />
+        </div>
+        <div className="second-fold section">
+          <div className="map-container">
+            <Map initialPosition={{lat: this.state.locationLat, lng: this.state.locationLng}} ref={instance => { this.map = instance; }} />
           </div>
+          <div className="fav-container">
+            <h3>Favorited</h3>
+            <div className="fav"><p>Dummy data</p></div>
+            <div className="fav"><p>Dummy data</p></div>
+            <div className="fav"><p>Dummy data</p></div>
+            <div className="fav"><p>Dummy data</p></div>
+            <div className="fav"><p>Dummy data</p></div>
+          </div>
+        </div>
 
       </div>
     )

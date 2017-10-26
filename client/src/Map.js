@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 class Map extends Component {
   componentDidMount() {
     const { lat, lng } = this.props.initialPosition;
-    console.log(lat, lng, "From maps")
+
     this.map = new google.maps.Map(this.refs.map, {
       center: {
         lat,

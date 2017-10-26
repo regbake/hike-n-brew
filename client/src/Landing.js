@@ -17,6 +17,7 @@ class Landing extends Component{
       //   state: "",
       //   description: "",
       //   lat: "",
+      //   lon: "",
       //   lng: "",
       //   length: "",
       //   thumbnail: ""
@@ -67,16 +68,8 @@ class Landing extends Component{
         success: function(hike){
           console.log(hike)
           this.setState({
-            // city: hike.city,
-            // state: hike.state,
-            // description: hike.description,
-            // lat: hike.lat,
-            // lng: hike.lng,
-            // length: hike.length,
-            // thumbnail: hike.thumbnail
-            hike: hike.places //state equals the returned  from api
+            hike: hike.places
           })
-          console.log("HERE HERE ", this.state.hike)
         }.bind(this),
         error: function(err) { alert(err); },
 

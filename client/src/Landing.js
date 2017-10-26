@@ -134,11 +134,24 @@ class Landing extends Component{
             <Map initialPosition={{lat: this.state.locationLat, lng: this.state.locationLng}} ref={instance => { this.map = instance; }} />
           </div>
         </div>
-        <div>
-          <MoreBrews />
+        <div className="MoreBrews">
+          <MoreBrews initialBrewData=
+            {{overall: this.state.overall,
+              street: this.state.street,
+              phone: this.state.phone,
+              status: this.state.status,
+              city: this.state.city,
+              state: this.state.state,
+              name: this.state.name }}/>
         </div>
-        <div>
-          <MoreTrails />
+        <div className="MoreTrails">
+          <MoreTrails initialTrailsData=
+            {{name: this.state.name,
+              city: this.state.city,
+              state: this.state.state,
+              description: this.state.description,
+              length: this.state.length,
+              thumbnail: this.state.thumbnail }} />
         </div>
 
       </div>

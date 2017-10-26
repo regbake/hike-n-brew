@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 class MoreTrails extends Component {
+  componentDidMount() {
+    const { name,city,state,description,length,thumbnail } = this.props.initialTrailsData;
+  }
   constructor(props) {
     super(props);
 

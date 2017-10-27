@@ -122,3 +122,19 @@ h3{
 ul{
   list-style: none;
 }
+.beerImage{
+  background-repeat: no-repeat;
+  background-size: 100%;
+  color: whitesmoke;
+}
+.hikeImage{
+  background-repeat: no-repeat;
+  background-size: 100%;
+  color: whitesmoke;
+}
+.hikeBox{
+  border: 2px solid black;
+}
+.brewBox{
+  border: 2px solid white;
+}

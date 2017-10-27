@@ -157,8 +157,6 @@ class Landing extends Component{
           </form>
 
         </div>
-
-
         <div className="second-fold section">
           <div className="map-container">
             <Map initialPosition={{lat: this.state.locationLat, lng: this.state.locationLng}} ref={instance => { this.map = instance; }} />

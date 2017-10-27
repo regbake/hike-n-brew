@@ -27,6 +27,12 @@ class Landing extends Component{
   handleSubmit = (e) => {
     e.preventDefault();
 
+    //assign some temp data before setting state
+    let tempHikes= [{}, {}, {}, {}, {}];
+    let tempBrews = [{}, {}, {}, {}, {}];
+    let tempLocationLat = "";
+    let tempLocationLng = "";
+
     axios.post("/search/", {
       location: this.state.location
     }).then(
@@ -37,17 +43,11 @@ class Landing extends Component{
         dataType: 'json',
         success: function(latLng) {
           //convert lat/lng of search location
-          this.setState({
-            locationLat: latLng.results[0].geometry.location.lat,
-            locationLng: latLng.results[0].geometry.location.lng
-          });
-          this.map.goToSearch(); //send the search lat/lng to Map
+          tempLocationLat = latLng.results[0].geometry.location.lat;
+          tempLocationLng = latLng.results[0].geometry.location.lng;
         }.bind(this),
         error: function(err) { alert(err); },
       }));
-
-    //assign some temp data before setting state
-    let tempHikes= [{}, {}, {}, {}, {}];
 
     //api call of trails based on input
     $.ajax({
@@ -75,9 +75,8 @@ class Landing extends Component{
         beforeSend: function(xhr) { //what's the beforeSend call?
         xhr.setRequestHeader("X-Mashape-Authorization", "9TRm77y42fmshbKC8mhoJDbFf111p1mClnPjsn0iUmYlE5gzRa"); // Enter here your Mashape key
         }
-    }).then(console.log("searched for hikes"));
+    }).done(console.log("searched for hikes", "-1-1-1-1-1-1-1"));
 
-    let tempBrews = [{}, {}, {}, {}, {}];
 
     $.ajax({
         url: 'http://beermapping.com/webservice/loccity/707deabe170541be2a9cba98e95e92f5/'+this.state.location+'&s=json',
@@ -115,8 +114,7 @@ class Landing extends Component{
             }
           }
 
-          console.log("after the brew loop ", tempBrews)
-
+          console.log("after the brew loop ", tempBrews, "0000000")
           for (let i=0; i<tempBrews.length; i++){
             //convert addresses to lat/lng
             $.ajax({
@@ -126,19 +124,26 @@ class Landing extends Component{
               dataType: 'json',
               success: function(latLng) {
                 //CONVERT THE ADDRESS TO LAT/LNG HERE
-                tempBrews[i].lat = latLng.results[0].geometry.location.lat;
-                tempBrews[i].lng = latLng.results[0].geometry.location.lng;
-
-                // console.log("lat/lng converstion here ", i, latLng, tempBrews)
-                this.setState({brews: tempBrews});
-                this.setState({hikes: tempHikes});
+                tempBrews[i].lat = latLng.results[0].geometry.location.lat.toFixed(5);
+                tempBrews[i].lng = latLng.results[0].geometry.location.lng.toFixed(5);
+                console.log("1111111111")
               }.bind(this),
               error: function(err) { alert(err); },
             })
           }
         }.bind(this),
         error: function(err) { alert(err); },
-    });
+    }).done(function(){
+      this.setState({
+        brews: tempBrews,
+        hikes: tempHikes,
+        locationLat: tempLocationLat,
+        locationLng: tempLocationLng
+      });
+      console.log('22222');
+      this.map.goToSearch(); //send the search lat/lng to Map
+
+    }.bind(this));
   }
 
   handleLocationChange = (e) => {
@@ -146,6 +151,7 @@ class Landing extends Component{
   }
 
   render() {
+
     return (
       <div>
         <div className="header section backgroundImage img-reponsive container-fluid"  style = {{backgroundImage: `url(${this.state.image})`}}>
@@ -155,12 +161,15 @@ class Landing extends Component{
             <input className="searchbox" type='text' placeholder="Search by city..." value={this.state.location} onChange={this.handleLocationChange} />
             <input className="btn-success" type="submit" value="Search" />
           </form>
-
         </div>
 
         <div className="second-fold section container-fluid">
           <div className="map-container col-lg-6 col-sm-10">
-            <Map initialPosition={{lat: this.state.locationLat, lng: this.state.locationLng}} ref={instance => { this.map = instance; }} />
+          <Map initialPosition={{lat: this.state.locationLat, lng: this.state.locationLng}}
+          dataPoints = {{hikes: this.state.hikes, brews: this.state.brews}}
+          ref={instance => { this.map = instance; }}
+          />
+
           </div>
           <div className="fav-container col-lg-4 col-sm-8">
             <h3>Favorited</h3>

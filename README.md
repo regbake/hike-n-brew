@@ -40,3 +40,15 @@ Reggie - Converting brewery API data from street address to latitude and longitu
 Tony - Setting map markers on the map related to the other APIs.
 <br>
 Team - Still feeling on track hoping to have an MVP by Friday.
+
+##Day Four (we're still breathing)
+
+Erik - Spent the day making the page responsive and adding a second fold to the front page.
+<br>
+Chase - Worked on responsive design and getting data to move between pages.
+<br>
+Reggie - API connectivity and pulling lat and lon for breweries throught the API.
+<br>
+Tony - Worked on getting markers to appear on the map and their design.
+<br>
+Team - On track to have MVP by day 5!

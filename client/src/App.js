@@ -46,7 +46,7 @@ class App extends Component {
                   <Link className="navbar-brand" to="/">Hike & Brew</Link>
                 </div>
                 <ul className="nav navbar-nav">
-                  <li className="active"><Link to="/">Home</Link></li>
+                  <li><Link to="/">Home</Link></li>
                   <li><Link to="/profile">Profile</Link></li>
                   <li><Link to="/about">About Us</Link></li>
                 </ul>

@@ -40,7 +40,7 @@ class Signup extends Component {
 
   render() {
     return (
-      <div>
+      <div className="well">
       <h3>Sign up</h3>
       <form onSubmit={this.handleSubmit}>
         Name: <input className="log-in-text" type='text' value={this.state.name} onChange={this.handleNameChange} /><br />

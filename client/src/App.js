@@ -14,6 +14,7 @@ import AuthenticatedRoute from './AuthenticatedRoute';
 import MountainBeer from "./images/mountainbeer.jpg";
 import MoreBrews from "./MoreBrews";
 import MoreHikes from "./MoreHikes"
+import About from "./About"
 // import MapContainer from './MapContainer';
 
 class App extends Component {
@@ -59,7 +60,7 @@ class App extends Component {
 
             <Route exact path="/"  render={(props) => <Landing />}/>
             <Route path="/profile" />
-            <Route path="/about" />
+            <Route path="/about" render={(props) => <About />}/>
             <Route path="/signup" render={(props) => <Signup  lift={this.liftTokenToState} />} />
             <Route path="/login" render={(props) => <Login  lift={this.liftTokenToState} />} />
             <Route path="/MoreBrews" render={(props) => <MoreBrews />} />

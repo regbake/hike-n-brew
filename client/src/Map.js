@@ -130,6 +130,7 @@ class Map extends Component {
 
     return (
       <div className="map-container" ref="map" style={{width: 600, height: 600, border: '1px solid black'}}>
+        
       </div>
     )
   }

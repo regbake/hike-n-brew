@@ -256,7 +256,7 @@ class Landing extends Component{
   render() {
     return (
       <div>
-        <div className="header section backgroundImage img-reponsive"  style = {{backgroundImage: `url(${this.state.image})`}}>
+        <div className="header backgroundImage img-reponsive"  style = {{backgroundImage: `url(${this.state.image})`}}>
           <h1>Hike & Brew</h1>
           <h2>Hike & Brew with your crew!</h2>
           <form onSubmit={this.handleSubmit}>

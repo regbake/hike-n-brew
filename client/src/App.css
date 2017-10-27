@@ -16,9 +16,16 @@
   width: 100%;
   margin-bottom: 0px;
 }
+<<<<<<< HEAD
 /*div.header{
   margin-top: -4.5%;
 }*/
+=======
+div.header{
+  margin-top: -3.5%;
+  padding-bottom: 16%;
+}
+>>>>>>> 4af2c773bdbb79eae581ed2665fd6429b92c7f48
 a{
   text-decoration: none;
   padding-left: 200px;
@@ -72,20 +79,20 @@ h3{
   background-size: 100%;
 }
 .second-fold{
- background: rgba(131, 147, 153, 1);
- width: 50%;
+ background: rgba(131, 147, 153, 0.5);
+ width: 100%;
 }
 .section{
   height: 100%;
   width: 100%;
 }
 .fav-container{
+  margin-top: 7.5%;
   width: 40%;
   height: 80%;
   border: 1px black solid;
   float: right;
   margin-right: 5%;
-  top: 0;
 }
 .fav{
   height: 20%;

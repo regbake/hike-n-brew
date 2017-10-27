@@ -17,122 +17,8 @@ class Landing extends Component{
       locationLat: 47.6, //seattle lat/lng to start
       locationLng: -122.33,
       //store the first 5 hikes, 0 index naming
-      hike0: {
-        name: "",
-        state: "",
-        city: "",
-        lat: "",
-        lng: "",
-        description: "",
-        length: ""
-      },
-      hike1: {
-        name: "",
-        state: "",
-        city: "",
-        lat: "",
-        lng: "",
-        description: "",
-        length: ""
-      },
-      hike2: {
-        name: "",
-        state: "",
-        city: "",
-        lat: "",
-        lng: "",
-        description: "",
-        length: ""
-      },
-      hike3: {
-        name: "",
-        state: "",
-        city: "",
-        lat: "",
-        lng: "",
-        description: "",
-        length: ""
-      },
-      hike4: {
-        name: "",
-        state: "",
-        city: "",
-        lat: "",
-        lng: "",
-        description: "",
-        length: ""
-      },
-      //store the first 5 brews, 0 index naming
-      brew0: {
-        name: "",
-        city: "",
-        overall: "",
-        phone: "",
-        state: "",
-        status: "",
-        street: "",
-        zip: ""
-      },
-      brew0Location: {
-        lat: "",
-        lng: ""
-      },
-      brew1: {
-        name: "",
-        city: "",
-        overall: "",
-        phone: "",
-        state: "",
-        status: "",
-        street: "",
-        zip: ""
-      },
-      brew1Location: {
-        lat: "",
-        lng: ""
-      },
-      brew2: {
-        name: "",
-        city: "",
-        overall: "",
-        phone: "",
-        state: "",
-        status: "",
-        street: "",
-        zip: ""
-      },
-      brew2Location: {
-        lat: "",
-        lng: ""
-      },
-      brew3: {
-        name: "",
-        city: "",
-        overall: "",
-        phone: "",
-        state: "",
-        status: "",
-        street: "",
-        zip: ""
-      },
-      brew3Location: {
-        lat: "",
-        lng: ""
-      },
-      brew4: {
-        name: "",
-        city: "",
-        overall: "",
-        phone: "",
-        state: "",
-        status: "",
-        street: "",
-        zip: ""
-      },
-      brew4Location: {
-        lat: "",
-        lng: ""
-      }
+      hikes: [],
+      brews: []
     };
 
   }
@@ -140,6 +26,12 @@ class Landing extends Component{
 //this is where all the APIs queries and AJAX calls are
   handleSubmit = (e) => {
     e.preventDefault();
+
+    //assign some temp data before setting state
+    let tempHikes= [{}, {}, {}, {}, {}];
+    let tempBrews = [{}, {}, {}, {}, {}];
+    let tempLocationLat = "";
+    let tempLocationLng = "";
 
     axios.post("/search/", {
       location: this.state.location
@@ -150,17 +42,12 @@ class Landing extends Component{
         data: {},
         dataType: 'json',
         success: function(latLng) {
-          this.setState({
-            locationLat: latLng.results[0].geometry.location.lat,
-            locationLng: latLng.results[0].geometry.location.lng
-          });
-          this.map.goToSearch(); //send the search lat/lng to Map
+          //convert lat/lng of search location
+          tempLocationLat = latLng.results[0].geometry.location.lat;
+          tempLocationLng = latLng.results[0].geometry.location.lng;
         }.bind(this),
         error: function(err) { alert(err); },
       }));
-
-    //assign some temp data before setting state
-    let hikes= [{}, {}, {}, {}, {}];
 
     //api call of trails based on input
     $.ajax({
@@ -172,7 +59,7 @@ class Landing extends Component{
 
           // for loop to set the state for each hike
           for (let i = 0; i<hike.places.length; i++) {
-            hikes[i] = {
+            tempHikes[i] = {
               name: hike.places[i].name,
               state: hike.places[i].state,
               city: hike.places[i].city,
@@ -182,16 +69,14 @@ class Landing extends Component{
               length: hike.places[i].length
             };
           }
-          console.log("checking to see the hike states", hikes);
         }.bind(this),
         error: function(err) { alert(err); },
 
         beforeSend: function(xhr) { //what's the beforeSend call?
         xhr.setRequestHeader("X-Mashape-Authorization", "9TRm77y42fmshbKC8mhoJDbFf111p1mClnPjsn0iUmYlE5gzRa"); // Enter here your Mashape key
         }
-    }).then(console.log("searched for hikes"));
+    }).done(console.log("searched for hikes", "-1-1-1-1-1-1-1"));
 
-    let brews = [{}, {}, {}, {}, {}];
 
     $.ajax({
         url: 'http://beermapping.com/webservice/loccity/707deabe170541be2a9cba98e95e92f5/'+this.state.location+'&s=json',
@@ -203,7 +88,7 @@ class Landing extends Component{
 
           if(brew.length > 5){
             for (let i=0; i<5; i++) {
-              brews[i] = {
+              tempBrews[i] = {
                 name: brew[i].name,
                 city: brew[i].city,
                 overall: brew[i].overall,
@@ -216,7 +101,7 @@ class Landing extends Component{
             }
           } else {
             for (let i = 0; i<brew.length; i++) {
-              brews[i] = {
+              tempBrews[i] = {
                 name: brew[i].name,
                 city: brew[i].city,
                 overall: brew[i].overall,
@@ -229,24 +114,36 @@ class Landing extends Component{
             }
           }
 
-          console.log("after the brew loop ", brews)
-
-          //convert addresses to lat/lng
-          $.ajax({
-            url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+this.state.brew0.street+ "," +this.state.brew0.zip+'&key='+'AIzaSyAZR0AqjyaFpY5WK2P7Labc62Jb-lExXNw',
-            type: "GET",
-            data: {},
-            dataType: 'json',
-            success: function(latLng) {
-              //CONVERT THE ADDRESS TO LAT/LNG HERE
-
-              console.log("lat/lng converstion here ", this.state.brew0Location)
-            }.bind(this),
-            error: function(err) { alert(err); },
-          })
+          console.log("after the brew loop ", tempBrews, "0000000")
+          for (let i=0; i<tempBrews.length; i++){
+            //convert addresses to lat/lng
+            $.ajax({
+              url: 'https://maps.googleapis.com/maps/api/geocode/json?address='+tempBrews[i].street+ "," +tempBrews[i].zip+'&key='+'AIzaSyAZR0AqjyaFpY5WK2P7Labc62Jb-lExXNw',
+              type: "GET",
+              data: {},
+              dataType: 'json',
+              success: function(latLng) {
+                //CONVERT THE ADDRESS TO LAT/LNG HERE
+                tempBrews[i].lat = latLng.results[0].geometry.location.lat.toFixed(5);
+                tempBrews[i].lng = latLng.results[0].geometry.location.lng.toFixed(5);
+                console.log("1111111111")
+              }.bind(this),
+              error: function(err) { alert(err); },
+            })
+          }
         }.bind(this),
         error: function(err) { alert(err); },
-    });
+    }).done(function(){
+      this.setState({
+        brews: tempBrews,
+        hikes: tempHikes,
+        locationLat: tempLocationLat,
+        locationLng: tempLocationLng
+      });
+      console.log('22222');
+      this.map.goToSearch(); //send the search lat/lng to Map
+
+    }.bind(this));
   }
 
   handleLocationChange = (e) => {
@@ -254,23 +151,27 @@ class Landing extends Component{
   }
 
   render() {
+
     return (
       <div>
-        <div className="header backgroundImage img-reponsive"  style = {{backgroundImage: `url(${this.state.image})`}}>
+        <div className="header section backgroundImage img-reponsive container-fluid"  style = {{backgroundImage: `url(${this.state.image})`}}>
           <h1>Hike & Brew</h1>
           <h2>Hike & Brew with your crew!</h2>
           <form onSubmit={this.handleSubmit}>
             <input className="searchbox" type='text' placeholder="Search by city..." value={this.state.location} onChange={this.handleLocationChange} />
             <input className="btn-success" type="submit" value="Search" />
           </form>
-
         </div>
 
-        <div className="second-fold section">
-          <div className="map-container">
-            <Map initialPosition={{lat: this.state.locationLat, lng: this.state.locationLng}} ref={instance => { this.map = instance; }} />
+        <div className="second-fold section container-fluid">
+          <div className="map-container col-lg-6 col-sm-10">
+          <Map initialPosition={{lat: this.state.locationLat, lng: this.state.locationLng}}
+          dataPoints = {{hikes: this.state.hikes, brews: this.state.brews}}
+          ref={instance => { this.map = instance; }}
+          />
+
           </div>
-          <div className="fav-container">
+          <div className="fav-container col-lg-4 col-sm-8">
             <h3>Favorited</h3>
             <div className="fav"><p>Dummy data</p></div>
             <div className="fav"><p>Dummy data</p></div>
@@ -279,7 +180,6 @@ class Landing extends Component{
             <div className="fav"><p>Dummy data</p></div>
           </div>
         </div>
-
       </div>
     )
   }

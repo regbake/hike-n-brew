@@ -36,7 +36,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div className="well">
       <h3>Log in</h3>
       <form onSubmit={this.handleSubmit}>
         Email: <input className="log-in-text" type='text' value={this.state.email} onChange={this.handleEmailChange} /><br />

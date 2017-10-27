@@ -171,13 +171,40 @@ class Landing extends Component{
           />
 
           </div>
-          <div className="fav-container col-lg-4 col-sm-8">
+          <div className="fav-container col-lg-4 col-sm-8 well">
             <h3>Favorited</h3>
-            <div className="fav"><p>Dummy data</p></div>
-            <div className="fav"><p>Dummy data</p></div>
-            <div className="fav"><p>Dummy data</p></div>
-            <div className="fav"><p>Dummy data</p></div>
-            <div className="fav"><p>Dummy data</p></div>
+
+            <div className="fav well">
+              <img src="https://placeimg.com/100/100/nature" className="img-thumbnail fav-img pull-left" />
+              <h4>Name of place</h4>
+              <p className="address">Address</p>
+              <p className="hours">9am-5pm</p>
+            </div>
+            <div className="fav well">
+              <img src="https://placeimg.com/100/100/nature" className="img-thumbnail fav-img pull-left" />
+              <h4>Name of place</h4>
+              <p className="address">Address</p>
+              <p className="hours">9am-5pm</p>
+            </div>
+            <div className="fav well">
+              <img src="https://placeimg.com/100/100/nature" className="img-thumbnail fav-img pull-left" />
+              <h4>Name of place</h4>
+              <p className="address">Address</p>
+              <p className="hours">9am-5pm</p>
+            </div>
+            <div className="fav well">
+              <img src="https://placeimg.com/100/100/nature" className="img-thumbnail fav-img pull-left" />
+              <h4>Name of place</h4>
+              <p className="address">Address</p>
+              <p className="hours">9am-5pm</p>
+            </div>
+            <div className="fav well">
+              <img src="https://placeimg.com/100/100/nature" className="img-thumbnail fav-img pull-left" />
+              <h4>Name of place</h4>
+              <p className="address">Address</p>
+              <p className="hours">9am-5pm</p>
+            </div>
+
           </div>
         </div>
       </div>

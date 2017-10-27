@@ -17,7 +17,7 @@
 }
 div.header{
   margin-top: -3.5%;
-
+  padding-bottom: 16%;
 }
 a{
   text-decoration: none;
@@ -72,19 +72,19 @@ h3{
 }
 .second-fold{
  background: rgba(131, 147, 153, 0.5);
- width: 50%;
+ width: 100%;
 }
 .section{
   height: 100%;
   width: 100%;
 }
 .fav-container{
+  margin-top: 7.5%;
   width: 40%;
   height: 80%;
   border: 1px black solid;
   float: right;
   margin-right: 5%;
-  top: 0;
 }
 .fav{
   height: 20%;

@@ -148,7 +148,7 @@ class Landing extends Component{
   render() {
     return (
       <div>
-        <div className="header section backgroundImage img-reponsive"  style = {{backgroundImage: `url(${this.state.image})`}}>
+        <div className="header section backgroundImage img-reponsive container-fluid"  style = {{backgroundImage: `url(${this.state.image})`}}>
           <h1>Hike & Brew</h1>
           <h2>Hike & Brew with your crew!</h2>
           <form onSubmit={this.handleSubmit}>
@@ -158,11 +158,11 @@ class Landing extends Component{
 
         </div>
 
-        <div className="second-fold section">
-          <div className="map-container">
+        <div className="second-fold section container-fluid">
+          <div className="map-container col-lg-6 col-sm-10">
             <Map initialPosition={{lat: this.state.locationLat, lng: this.state.locationLng}} ref={instance => { this.map = instance; }} />
           </div>
-          <div className="fav-container">
+          <div className="fav-container col-lg-4 col-sm-8">
             <h3>Favorited</h3>
             <div className="fav"><p>Dummy data</p></div>
             <div className="fav"><p>Dummy data</p></div>

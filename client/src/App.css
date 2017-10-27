@@ -16,16 +16,13 @@
   width: 100%;
   margin-bottom: 0px;
 }
-<<<<<<< HEAD
-/*div.header{
+div.header{
   margin-top: -4.5%;
-}*/
-=======
+}
 div.header{
   margin-top: -3.5%;
   padding-bottom: 16%;
 }
->>>>>>> 4af2c773bdbb79eae581ed2665fd6429b92c7f48
 a{
   text-decoration: none;
   padding-left: 200px;
@@ -100,4 +97,20 @@ h3{
 }
 .fav-image{
 
+}
+.beerImage{
+  background-repeat: no-repeat;
+  background-size: 100%;
+  color: whitesmoke;
+}
+.hikeImage{
+  background-repeat: no-repeat;
+  background-size: 100%;
+  color: whitesmoke;
+}
+.hikeBox{
+  border: 2px solid black;
+}
+.brewBox{
+  border: 2px solid white;
 }

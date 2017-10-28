@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 /* global google */
 
-// let testLat = this.props.dataPoints.brews[0].lat;
-// let testLng = this.props.dataPoints.brews[0].lng;
-
 class Map extends Component {
   componentDidMount() {
     const { lat, lng } = this.props.initialPosition;
@@ -21,13 +18,8 @@ class Map extends Component {
     let localHikes = this.props.dataPoints.hikes;
     let localBrews = this.props.dataPoints.brews;
 
-    console.log(typeof localHikes[0].lat, "sup")
-
     const { lat, lng } = this.props.initialPosition;
     this.map.panTo({lat, lng})
-
-    console.log("from SEARCH", this.props.dataPoints.brews, this.props.dataPoints.brews[0])
-    console.log(localHikes, localBrews, " :Local data")
 
     var infoWindow = new google.maps.InfoWindow({
       content: "hi"
@@ -48,6 +40,9 @@ class Map extends Component {
       map: this.map,
       title: localHikes[0].name
     });
+    hike.addListener('click', function(){
+      infoWindow.open(this.map, hike);
+    });
 
     var hike1 = new google.maps.Marker({
       position: {
@@ -63,6 +58,9 @@ class Map extends Component {
       },
       map: this.map,
       title: localHikes[1].name
+    });
+    hike1.addListener('click', function(){
+      infoWindow.open(this.map, hike1);
     });
 
     var hike2 = new google.maps.Marker({
@@ -80,6 +78,9 @@ class Map extends Component {
       map: this.map,
       title: localHikes[2].name
     });
+    hike2.addListener('click', function(){
+      infoWindow.open(this.map, hike2);
+    });
 
     var hike3 = new google.maps.Marker({
       position: {
@@ -95,6 +96,9 @@ class Map extends Component {
       },
       map: this.map,
       title: localHikes[3].name
+    });
+    hike3.addListener('click', function(){
+      infoWindow.open(this.map, hike3);
     });
 
     var hike4 = new google.maps.Marker({
@@ -112,6 +116,9 @@ class Map extends Component {
       map: this.map,
       title: localHikes[4].name
     });
+    hike4.addListener('click', function(){
+      infoWindow.open(this.map, hike4);
+    });
 
     var brew = new google.maps.Marker({
       position: {
@@ -126,6 +133,9 @@ class Map extends Component {
           },
       map: this.map,
       title: localBrews[0].name
+    });
+    brew.addListener('click', function(){
+      infoWindow.open(this.map, brew);
     });
 
     var brew1 = new google.maps.Marker({
@@ -143,12 +153,17 @@ class Map extends Component {
       map: this.map,
       title: localBrews[1].name
     });
+    brew1.addListener('click', function(){
+      infoWindow.open(this.map, brew1);
+    });
 
     var brew2 = new google.maps.Marker({
       position: {
         lat: localBrews[2].lat,
         lng: localBrews[2].lng
       },
+      map: this.map,
+      title: localBrews[2].name,
       icon: {
         path: "M4 1l5.6 45.18c.175 1.409 1.399 2.82 2.801 2.82h25.198c1.401 0 2.627-1.411 2.799-2.82l5.602-45.18h-42zm6.3 5.646h29.399l-1.312 11.295h-26.774l-1.313-11.295z",
         fillColor: '#000000',
@@ -156,15 +171,17 @@ class Map extends Component {
         scale:.5,
         strokeWeight: 0
         },
-      map: this.map,
-      title: localBrews[2].name
-    });
+        brew2.addListener('click', function(){
+          infoWindow.open(this.map, brew2);
+        });
 
     var brew3 = new google.maps.Marker({
       position: {
         lat: localBrews[3].lat,
         lng: localBrews[3].lng
       },
+      map: this.map,
+      title: localBrews[3].name,
       icon: {
         path: "M4 1l5.6 45.18c.175 1.409 1.399 2.82 2.801 2.82h25.198c1.401 0 2.627-1.411 2.799-2.82l5.602-45.18h-42zm6.3 5.646h29.399l-1.312 11.295h-26.774l-1.313-11.295z",
         fillColor: '#000000',
@@ -172,8 +189,9 @@ class Map extends Component {
         scale:.5,
         strokeWeight: 0
         },
-      map: this.map,
-      title: localBrews[3].name
+    });
+    brew3.addListener('click', function(){
+      infoWindow.open(this.map, brew3);
     });
 
     var brew4 = new google.maps.Marker({
@@ -181,6 +199,8 @@ class Map extends Component {
         lat: localBrews[4].lat,
         lng: localBrews[4].lng
       },
+      map: this.map,
+      title: localBrews[4].name,
       icon: {
         path: "M4 1l5.6 45.18c.175 1.409 1.399 2.82 2.801 2.82h25.198c1.401 0 2.627-1.411 2.799-2.82l5.602-45.18h-42zm6.3 5.646h29.399l-1.312 11.295h-26.774l-1.313-11.295z",
         fillColor: '#000000',
@@ -191,8 +211,9 @@ class Map extends Component {
       map: this.map,
       title: localBrews[4].name
     });
-
-
+    brew4.addListener('click', function(){
+      infoWindow.open(this.map, brew4);
+    });
   }
 
   render() {

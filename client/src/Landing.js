@@ -6,6 +6,8 @@ import MountainBeer from "./images/mountainbeer.jpg";
 import MoreBrews from "./MoreBrews";
 import MoreHikes from "./MoreHikes";
 import Favorites from "./Favorites";
+import Scrollchor from 'react-scrollchor';
+
 
 var counter = 0;
 class Landing extends Component{
@@ -147,12 +149,15 @@ class Landing extends Component{
           <h2>Hike & Brew with your crew!</h2>
           <form onSubmit={this.handleSubmit}>
             <input className="searchbox" type='text' placeholder="Search by city..." value={this.state.location} onChange={this.handleLocationChange} />
+            <div><Scrollchor to="#map">
             <input className="btn-success" type="submit" value="Search" />
+            </Scrollchor>
+          </div>
           </form>
         </div>
 
         <div className="second-fold section container-fluid">
-          <div className="map-container col-lg-6 col-sm-10">
+          <div id="map" className="map-container col-lg-6 col-sm-10">
           <Map initialPosition={{lat: this.state.locationLat, lng: this.state.locationLng}}
           dataPoints = {{hikes: this.state.hikes, brews: this.state.brews}}
           ref={instance => { this.map = instance; }}

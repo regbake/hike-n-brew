@@ -294,7 +294,7 @@ class Landing extends Component{
             <input className="searchbox" type='text' placeholder="Search by city..." value={this.state.location} onChange={this.handleLocationChange} />
             <div><Scrollchor to="#map">
             <input className="btn-success" type="submit" value="Search" />
-            </Scrollchor>
+          </Scrollchor>
           </div>
           </form>
         </div>

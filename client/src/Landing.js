@@ -27,8 +27,8 @@ class Landing extends Component{
   }
 
   handleSubmit = (e) => {
-      e.preventDefault();
-
+      // e.preventDefault();
+      console.log("HELLO FROM THE HANDLE SUBMIT")
       //assign some temp data before setting state
       let tempHikes= [{}, {}, {}, {}, {}];
       let tempBrews = [{}, {}, {}, {}, {}];
@@ -129,7 +129,6 @@ class Landing extends Component{
                       }
                     })
               } //end of for loop
-
           })
   }
 
@@ -139,9 +138,7 @@ class Landing extends Component{
   }
 
   render() {
-    if (counter === 7) {
-      console.log("there's seven")
-    }
+
     return (
       <div>
         <div className="header section backgroundImage img-reponsive container-fluid"  style = {{backgroundImage: `url(${this.state.image})`}}>
@@ -149,10 +146,9 @@ class Landing extends Component{
           <h2>Hike & Brew with your crew!</h2>
           <form onSubmit={this.handleSubmit}>
             <input className="searchbox" type='text' placeholder="Search by city..." value={this.state.location} onChange={this.handleLocationChange} />
-            <div><Scrollchor to="#map">
-            <input className="btn-success" type="submit" value="Search" />
-          </Scrollchor>
-          </div>
+            <Scrollchor to="#map" afterAnimate={() => this.handleSubmit()}>
+              <input className="btn-success" type="submit" value="Search" />
+            </Scrollchor>
           </form>
         </div>
 

@@ -15,6 +15,7 @@ class Map extends Component {
   }
 
   goToSearch = () => {
+    console.log("HELLO FROM MAP COMP.")
     let localHikes = this.props.dataPoints.hikes;
     let localBrews = this.props.dataPoints.brews;
 
@@ -124,7 +125,8 @@ class Map extends Component {
       position: {
         lat: parseInt(localBrews[0].lat),
         lng: parseInt(localBrews[0].lng)
-        },icon: {
+        },
+        icon: {
           path: "M4 1l5.6 45.18c.175 1.409 1.399 2.82 2.801 2.82h25.198c1.401 0 2.627-1.411 2.799-2.82l5.602-45.18h-42zm6.3 5.646h29.399l-1.312 11.295h-26.774l-1.313-11.295z",
           fillColor: '#000000',
           fillOpacity: 1,
@@ -162,18 +164,19 @@ class Map extends Component {
         lat: localBrews[2].lat,
         lng: localBrews[2].lng
       },
-      map: this.map,
-      title: localBrews[2].name,
       icon: {
         path: "M4 1l5.6 45.18c.175 1.409 1.399 2.82 2.801 2.82h25.198c1.401 0 2.627-1.411 2.799-2.82l5.602-45.18h-42zm6.3 5.646h29.399l-1.312 11.295h-26.774l-1.313-11.295z",
         fillColor: '#000000',
         fillOpacity: 1,
         scale:.5,
         strokeWeight: 0
-        },
-        brew2.addListener('click', function(){
-          infoWindow.open(this.map, brew2);
-        });
+      },
+      map: this.map,
+      title: localBrews[2].name
+    });
+    brew2.addListener('click', function(){
+      infoWindow.open(this.map, brew2);
+    });
 
     var brew3 = new google.maps.Marker({
       position: {
@@ -220,7 +223,7 @@ class Map extends Component {
 
     return (
       <div className="map-container" ref="map" style={{width: 600, height: 600, border: '1px solid black'}}>
-        
+
       </div>
     )
   }

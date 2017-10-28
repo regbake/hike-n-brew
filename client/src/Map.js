@@ -21,13 +21,8 @@ class Map extends Component {
     let localHikes = this.props.dataPoints.hikes;
     let localBrews = this.props.dataPoints.brews;
 
-    console.log(typeof localHikes[0].lat, "sup")
-
     const { lat, lng } = this.props.initialPosition;
     this.map.panTo({lat, lng})
-
-    console.log("from SEARCH", this.props.dataPoints.brews, this.props.dataPoints.brews[0])
-    console.log(localHikes, localBrews, " :Local data")
 
     var infoWindow = new google.maps.InfoWindow({
       content: "hi"
@@ -41,6 +36,9 @@ class Map extends Component {
       map: this.map,
       title: localHikes[0].name
     });
+    hike.addListener('click', function(){
+      infoWindow.open(this.map, hike);
+    });
 
     var hike1 = new google.maps.Marker({
       position: {
@@ -49,6 +47,9 @@ class Map extends Component {
       },
       map: this.map,
       title: localHikes[1].name
+    });
+    hike1.addListener('click', function(){
+      infoWindow.open(this.map, hike1);
     });
 
     var hike2 = new google.maps.Marker({
@@ -59,6 +60,9 @@ class Map extends Component {
       map: this.map,
       title: localHikes[2].name
     });
+    hike2.addListener('click', function(){
+      infoWindow.open(this.map, hike2);
+    });
 
     var hike3 = new google.maps.Marker({
       position: {
@@ -67,6 +71,9 @@ class Map extends Component {
       },
       map: this.map,
       title: localHikes[3].name
+    });
+    hike3.addListener('click', function(){
+      infoWindow.open(this.map, hike3);
     });
 
     var hike4 = new google.maps.Marker({
@@ -77,6 +84,9 @@ class Map extends Component {
       map: this.map,
       title: localHikes[4].name
     });
+    hike4.addListener('click', function(){
+      infoWindow.open(this.map, hike4);
+    });
 
     var brew = new google.maps.Marker({
       position: {
@@ -85,6 +95,9 @@ class Map extends Component {
       },
       map: this.map,
       title: localBrews[0].name
+    });
+    brew.addListener('click', function(){
+      infoWindow.open(this.map, brew);
     });
 
     var brew1 = new google.maps.Marker({
@@ -95,33 +108,45 @@ class Map extends Component {
       map: this.map,
       title: localBrews[1].name
     });
-    //
-    // var brew2 = new google.maps.Marker({
-    //   position: {
-    //     lat: localBrews[2].lat,
-    //     lng: localBrews[2].lng
-    //   },
-    //   map: this.map,
-    //   title: localBrews[2].name
-    // });
-    //
-    // var brew3 = new google.maps.Marker({
-    //   position: {
-    //     lat: localBrews[3].lat,
-    //     lng: localBrews[3].lng
-    //   },
-    //   map: this.map,
-    //   title: localBrews[3].name
-    // });
-    //
-    // var brew4 = new google.maps.Marker({
-    //   position: {
-    //     lat: localBrews[4].lat,
-    //     lng: localBrews[4].lng
-    //   },
-    //   map: this.map,
-    //   title: localBrews[4].name
-    // });
+    brew1.addListener('click', function(){
+      infoWindow.open(this.map, brew1);
+    });
+
+    var brew2 = new google.maps.Marker({
+      position: {
+        lat: localBrews[2].lat,
+        lng: localBrews[2].lng
+      },
+      map: this.map,
+      title: localBrews[2].name
+    });
+    brew2.addListener('click', function(){
+      infoWindow.open(this.map, brew2);
+    });
+
+    var brew3 = new google.maps.Marker({
+      position: {
+        lat: localBrews[3].lat,
+        lng: localBrews[3].lng
+      },
+      map: this.map,
+      title: localBrews[3].name
+    });
+    brew3.addListener('click', function(){
+      infoWindow.open(this.map, brew3);
+    });
+
+    var brew4 = new google.maps.Marker({
+      position: {
+        lat: localBrews[4].lat,
+        lng: localBrews[4].lng
+      },
+      map: this.map,
+      title: localBrews[4].name
+    });
+    brew4.addListener('click', function(){
+      infoWindow.open(this.map, brew4);
+    });
 
 
   }

@@ -160,7 +160,7 @@ class Landing extends Component{
           />
           </div>
           <div className="fav-container col-lg-4 col-sm-8 well">
-          <Favorites />
+          <Favorites dataPoints = {{hikes: this.state.hikes, brews: this.state.brews}} />
           </div>
 
         </div>

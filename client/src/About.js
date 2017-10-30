@@ -55,8 +55,8 @@ class About extends Component {
                         <li className="tech-text">Calls to the APIs using AJAX</li>
                         <li className="tech-text">Bootstrap</li>
                         <li className="tech-text">MongoDB & Mongoose</li>
-                        <li className="tech-text">Javascript</li>
-                        <li className="tech-text">HTML, CSS & JSX</li>
+                        <li className="tech-text">JSX</li>
+                        <li className="tech-text">HTML, CSS & Javascript</li>
                         <li className="tech-text">Github Group Collaboration</li>
                         <li className="tech-text">Some Good ol' Elbow Grease</li>
                     </ul>

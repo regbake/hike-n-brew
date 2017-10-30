@@ -25,7 +25,6 @@ class Favorites extends Component {
       </div>
     )
 
-
     return (
       <div>
         <h3>Results</h3>

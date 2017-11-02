@@ -13,9 +13,9 @@ var flash = require('connect-flash');
 
 // Mongoose stuff
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mern-local-auth');
+mongoose.connect(process.env.MONGOD_URI, {useMongoClient: true});
 
-var index = require('./routes/index');
+// var index = require('./routes/index');
 var users = require('./routes/users');
 var auth = require('./routes/auth');
 var search = require("./routes/search");
@@ -32,8 +32,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(express.static(path.resolve(__dirname, 'client', 'build')));
 /* Configure the express-session...
  * [secret]: A string used to "sign" the session ID cookie, which makes it unique
  * from application to application. We'll hide this in the environment
@@ -61,10 +62,14 @@ app.use(function(req, res, next) {
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/', index);
+// app.use('/', index);
 app.use('/users', users);
 app.use('/auth', auth);
 app.use("/search", search);
+
+app.get('*', function(req, res, next) {
+	res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+});
 
 // catch 404 and forward to error handler - commented out
 // app.use(function(req, res, next) {

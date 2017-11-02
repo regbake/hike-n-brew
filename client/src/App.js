@@ -7,33 +7,67 @@ import {
 import './App.css';
 import Signup from './Signup';
 import Login from './Login';
+import Landing from "./Landing";
+import Brewery from "./Brewery";
+import Map from "./Map";
 import AuthenticatedRoute from './AuthenticatedRoute';
+import MountainBeer from "./images/mountainbeer.jpg";
+import MoreBrews from "./MoreBrews";
+import MoreHikes from "./MoreHikes"
+import About from "./About"
+// import MapContainer from './MapContainer';
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      token: {}
+      image: MountainBeer,
+      token: {},
+      user: {}
     }
     this.liftTokenToState = this.liftTokenToState.bind(this)
   }
 
-  liftTokenToState(token) {
-    this.setState({token: token})
+  liftTokenToState(data) {
+    this.setState({
+      token: data.token,
+      user: data.user
+    })
   }
 
   render() {
     return (
-      <div className="App">
-        <div className="SignupBox">
-          <Signup lift={this.liftTokenToState} />
-        </div>
-        <div className="LoginBox">
-          <Login lift={this.liftTokenToState} />
-        </div>
-        <div>
+      <div>
+        <Router>
+          <div className="App">
 
-        </div>
+          <nav className="navbar navbar-inverse">
+              <div className="container-fluid">
+                <div className="navbar-header">
+                  <Link className="navbar-brand" to="/">Hike & Brew</Link>
+                </div>
+                <ul className="nav navbar-nav">
+                  <li><Link to="/">Home</Link></li>
+                  <li><Link to="/profile">Profile</Link></li>
+                  <li><Link to="/about">About Us</Link></li>
+                </ul>
+                <ul className="nav navbar-nav navbar-right">
+                  <li><Link to="signup"><span className="glyphicon glyphicon-user"></span>Sign Up</Link></li>
+                  <li><Link to="login"><span className="glyphicon glyphicon-log-in"></span>Login</Link></li>
+                </ul>
+              </div>
+            </nav>
+
+            <Route exact path="/"  render={(props) => <Landing />}/>
+            <Route path="/profile" />
+            <Route path="/about" render={(props) => <About />}/>
+            <Route path="/signup" render={(props) => <Signup  lift={this.liftTokenToState} />} />
+            <Route path="/login" render={(props) => <Login  lift={this.liftTokenToState} />} />
+            <Route path="/MoreBrews" render={(props) => <MoreBrews />} />
+            <Route path="/MoreHikes" render={(props) => <MoreHikes />} />
+
+          </div>
+        </Router>
       </div>
     );
   }

@@ -34,18 +34,21 @@ class Signup extends Component {
     }).then(result => {
       console.log(result.data)
       localStorage.setItem('mernToken', result.data.token)
-      this.props.lift(result.data.token)
+      this.props.lift(result.data)
     })
   }
 
   render() {
     return (
+      <div className="well">
+      <h3>Sign up</h3>
       <form onSubmit={this.handleSubmit}>
-        Name: <input type='text' value={this.state.name} onChange={this.handleNameChange} /><br />
-        Email: <input type='text' value={this.state.email} onChange={this.handleEmailChange} /><br />
-        Password: <input type='password' value={this.state.password} onChange={this.handlePasswordChange} /><br />
+        Name: <input className="log-in-text" type='text' value={this.state.name} onChange={this.handleNameChange} /><br />
+        Email: <input className="log-in-text" type='text' value={this.state.email} onChange={this.handleEmailChange} /><br />
+        Password: <input className="log-in-text" type='password' value={this.state.password} onChange={this.handlePasswordChange} /><br />
         <input type='submit' value='Sign Up' />
       </form>
+      </div>
     );
   }
 }

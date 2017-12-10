@@ -146,7 +146,7 @@ class Landing extends Component{
           <div class="alert">
             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
             <strong>Note!</strong> For the search function to work properly, please load scripts. Hike n Brew is still in testing...
-            <img id="load-photo" src="https://i.imgur.com/dQQq9sr.png">
+            <img id="load-photo" src="https://i.imgur.com/dQQq9sr.png"/>
           </div>
 
           <h2>Hike & Brew with your crew!</h2>

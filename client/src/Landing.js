@@ -39,7 +39,7 @@ class Landing extends Component{
       //   location: this.state.location
       // })
 
-      var getLocation = axios.get('https://maps.googleapis.com/maps/api/geocode/json?address='+this.state.location+'&key='+'AIzaSyAZR0AqjyaFpY5WK2P7Labc62Jb-lExXNw')
+      var getLocation = axios.get('http://maps.googleapis.com/maps/api/geocode/json?address='+this.state.location+'&key='+'AIzaSyAZR0AqjyaFpY5WK2P7Labc62Jb-lExXNw')
         .then((latLng) => {
           console.log("latLng: ", latLng);
           tempLocationLat = latLng.data.results[0].geometry.location.lat;
@@ -49,7 +49,7 @@ class Landing extends Component{
 
         //api call of trails based on input
       var getTrails = $.ajax({
-            url: 'https://trailapi-trailapi.p.mashape.com/?limit=5&lng=-&q[activities_activity_type_name_eq]=hiking&q[city_cont]='+this.state.location+'&radius=25', // The URL to the API. You can get this by clicking on "Show CURL example" from an API profile
+            url: 'http://trailapi-trailapi.p.mashape.com/?limit=5&lng=-&q[activities_activity_type_name_eq]=hiking&q[city_cont]='+this.state.location+'&radius=25', // The URL to the API. You can get this by clicking on "Show CURL example" from an API profile
             type: 'GET', // The HTTP Method, can be GET POST PUT DELETE etc
             data: {}, // Additional parameters here
             dataType: 'json',
@@ -109,7 +109,7 @@ class Landing extends Component{
               console.log("tempBrews: ", tempBrews);
 
               for (let i = 0; i<tempBrews.length; i++) {
-                axios.get('https://maps.googleapis.com/maps/api/geocode/json?address='+tempBrews[i].street+ "," +tempBrews[i].zip+'&key='+'AIzaSyAZR0AqjyaFpY5WK2P7Labc62Jb-lExXNw')
+                axios.get('http://maps.googleapis.com/maps/api/geocode/json?address='+tempBrews[i].street+ "," +tempBrews[i].zip+'&key='+'AIzaSyAZR0AqjyaFpY5WK2P7Labc62Jb-lExXNw')
                     .then((latLng) => {
                       console.log("brew iteration #", i, " ,", tempBrews.length);
                       tempBrews[i].lat = latLng.data.results[0].geometry.location.lat;
@@ -138,7 +138,7 @@ class Landing extends Component{
   }
 
   render() {
-
+    console.log("this is a test by reggie")
     return (
       <div>
         <div className="header section backgroundImage img-reponsive container-fluid"  style = {{backgroundImage: `url(${this.state.image})`}}>

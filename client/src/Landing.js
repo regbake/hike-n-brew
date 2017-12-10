@@ -143,9 +143,9 @@ class Landing extends Component{
         <div className="header section backgroundImage img-reponsive container-fluid"  style = {{backgroundImage: `url(${this.state.image})`}}>
           <h1>Hike & Brew</h1>
 
-          <div class="alert">
-            <span class="closebtn" onclick={this.parentElement.style.display='none'}>&times</span>
-            <strong>Note!</strong> For the search function to work properly, please load scripts. Hike n Brew is still in testing...
+          <div className="alert">
+            <span className="closebtn" onclick={this.parentElement.style.display='none'}>&times</span>
+            <strong>Note!</strong> For the search feature to work properly, please load scripts. Hike n Brew is still in testing...
             <img id="load-photo" src="https://i.imgur.com/dQQq9sr.png"/>
           </div>
 

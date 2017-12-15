@@ -143,13 +143,14 @@ class Landing extends Component{
         <div className="header section backgroundImage img-reponsive container-fluid"  style = {{backgroundImage: `url(${this.state.image})`}}>
           <h1>Hike & Brew</h1>
 
+          <div className="alert">
+            <span className="closebtn" onclick={this.parentElement.style.display='none'}>&times</span>
+            <strong>Note!</strong> For the search feature to work properly, please load scripts. Hike n Brew is still in testing...
+            <img id="load-photo" src="https://i.imgur.com/dQQq9sr.png"/>
+          </div>
+
           <h2>Hike & Brew with your crew!</h2>
-          <form onSubmit={this.handleSubmit}>
-            <input className="searchbox" type='text' placeholder="Search by city..." value={this.state.location} onChange={this.handleLocationChange} />
-            <Scrollchor to="#map" afterAnimate={() => this.handleSubmit()}>
-              <input className="btn-success" type="submit" value="Search" />
-            </Scrollchor>
-          </form>
+          <h3>Note: After searching for a location, you may need to 'enable scripts' in the URL bar. Hike n Brew is still in testing!</h3>
         </div>
 
         <div className="second-fold section container-fluid">
